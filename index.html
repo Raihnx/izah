@@ -23,9 +23,53 @@
       --accent-light:#ffb3d9;
       --muted:#666666;
       --card-bg: #fff0f5;
+      --gold: #d4af37;
+      --gold-light: #ffd700;
     }
     html,body{height:100%;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--primary);scroll-behavior:smooth}
     a{color:var(--accent)}
+    
+    /* Discount Banner */
+    .discount-banner {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+      color: white;
+      padding: 12px 0;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      position: fixed;
+      overflow: hidden;
+      z-index: 1030;
+    }
+    .discount-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shine 3s infinite;
+    }
+    @keyframes shine {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    .discount-banner .offer-text {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .discount-banner i {
+      margin: 0 8px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
     .navbar{background:#ffffff;backdrop-filter: blur(4px);border-bottom:1px solid #ffc0cb;box-shadow: 0 2px 4px rgba(0,0,0,0.05);padding:0.25rem 0}
     .brand{font-weight:700;letter-spacing:1px;color:var(--primary)}
     .logo-container{height:45px;display:flex;align-items:center;justify-content:center}
@@ -95,13 +139,156 @@
     .carousel-item-custom.active{opacity:1}
     .carousel-item-custom img,.carousel-item-custom video{width:100%;height:100%;object-fit:cover}
 
+    /* Combo Section */
+    .combo-section {
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+      padding: 3rem 0;
+      margin: 2rem 0 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .combo-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .combo-section h2 {
+      color: #6e2e4e;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+    .combo-section h2 i {
+      color: #6e2e4e;
+      margin-right: 10px;
+    }
+    .combo-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      height: 100%;
+    }
+    .combo-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    }
+    .combo-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .combo-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .combo-card-body {
+      padding: 1.5rem;
+    }
+    .combo-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .combo-description {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .combo-pricing {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .combo-original-price {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .combo-sale-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+    .combo-savings {
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
     /* Product cards */
     .card{background:var(--card-bg);border:1px solid #ffc0cb;border-radius:14px;box-shadow: 0 2px 8px rgba(255,105,180,0.1);transition: transform 0.3s ease, box-shadow 0.3s ease;height:100%;display:flex;flex-direction:column}
     .card:hover{transform:translateY(-5px);box-shadow: 0 4px 16px rgba(255,105,180,0.2)}
-    .card-img-top{height:220px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px;flex-shrink:0}
-    .card-body{flex:1;display:flex;flex-direction:column;justify-content:center}
-    .card .name{font-size:.98rem;font-weight:600;color:var(--primary);min-height:2.4em;display:flex;align-items:center;justify-content:center}
-    .price{color:var(--accent);font-weight:700}
+    .card-img-top{height:250px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px;flex-shrink:0}
+    .card-body{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding: 1rem;}
+    .card .name{font-size:1rem;font-weight:600;color:var(--primary);min-height:2.4em;margin-bottom: 0.5rem;}
+    .price{color:var(--accent);font-weight:700;font-size: 1.1rem;}
+    .stock-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .in-stock {
+      background: linear-gradient(135deg, #ffb3d9 0%, #ffb3d9#006928 100%);
+      color: #006928;
+    }
+    .out-of-stock {
+      background: #e0e0e0;
+      color: #666;
+    }
+
+    .btn-view-product {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: auto;
+    }
+    .btn-view-product:hover {
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+    }
 
     .btn-accent{background:linear-gradient(90deg,var(--accent),var(--accent-dark));border:0;color:#fff;transition: all 0.3s ease}
     .btn-accent:hover{background:linear-gradient(90deg,var(--accent-dark),var(--accent));color:#fff;transform:translateY(-2px)}
@@ -114,11 +301,79 @@
     .cart-badge{position:relative}
     .cart-count{position:absolute;right:-10px;top:-8px;background:var(--accent);color:#fff;border-radius:50%;padding:3px 7px;font-size:.75rem}
 
+    /* Cart Items with Images */
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #ffc0cb;
+    }
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #ffc0cb;
+    }
+    .cart-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cart-item-name {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .cart-item-info {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .cart-item-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .cart-item-price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
     /* Footer */
     footer{padding:2rem 0;color:var(--muted);background:linear-gradient(180deg, rgba(255,240,245,0.3), rgba(255,240,245,0.6));margin-top:3rem}
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+      color: white;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .contact-item i {
+      width: 30px;
+      color: var(--accent);
+    }
 
     /* Category sections */
-    .category-section{scroll-margin-top: 150px}
+    .category-section{scroll-margin-top: 190px}
 
     /* Product Detail Modal */
     .product-modal .modal-dialog{max-width:900px}
@@ -139,15 +394,19 @@
         font-size: 0.8rem;
         margin:0 0.15rem;
       }
+      .discount-banner {
+        font-size: 0.8rem;
+        padding: 10px 0;
+      }
     }
 
     /* Tablet and up */
     @media(min-width:768px){
-      .card-img-top{height:260px}
+      .card-img-top{height:280px}
       .hero .title{font-size:2.8rem}
       .hero-carousel{height:500px}
       .logo-img{max-height:40px}
-      .category-section{scroll-margin-top: 130px}
+      .category-section{scroll-margin-top: 170px}
       .tab-menu{
         padding: 0.25rem 0;
       }
@@ -159,6 +418,12 @@
         padding:0.7rem 2rem;
         margin:0 0.5rem;
         font-size: 0.95rem;
+      }
+      .discount-banner {
+        font-size: 1.05rem;
+      }
+      .combo-card img {
+        height: 320px;
       }
     }
 
@@ -173,13 +438,29 @@
     @media(max-width:767px){
       .product-detail-carousel{height:320px}
       .carousel-nav{width:38px;height:38px}
+      .combo-card img {
+        height: 240px;
+      }
+      .cart-item-img {
+        width: 60px;
+        height: 60px;
+      }
     }
   </style>
 </head>
 <body>
+
+<!-- DISCOUNT BANNER -->
+<div class="discount-banner fixed-top">
+  <div class="offer-text">
+    <i class="fas fa-gift"></i>
+    <span>Get 10% OFF on orders above ₹299 | 20% OFF on orders above ₹399</span>
+    <i class="fas fa-sparkles"></i>
+  </div>
+</div>
  
 <!-- NAVBAR -->
-<nav class="navbar fixed-top">
+<nav class="navbar fixed-top" style="top: 44px">
   <div class="container-fluid px-4">
     <div class="row w-100 align-items-center">
       <div class="col-2 text-start">
@@ -203,9 +484,14 @@
 </nav>
 
 <!-- TAB MENU -->
-<nav class="tab-menu fixed-top" style="top:48px">
+<nav class="tab-menu fixed-top" style="top:92px">
   <div class="container-fluid px-0">
     <ul class="nav nav-pills mb-0">
+      <li class="nav-item">
+        <a class="nav-link category-link" href="#combos" data-category="combos">
+          <i class="fas fa-fire"></i> Combos & Deals
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link category-link" href="#necklaces" data-category="necklaces">Necklaces</a>
       </li>
@@ -223,15 +509,15 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="padding-top:110px">
+<section class="hero" style="padding-top:150px">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6" data-aos="fade-right">
         <h1 class="title hero-text" id="hero-title">Delicate.</h1>
         <p class="subtitle">IZAH — minimal fashion jewellery priced for students. Fresh drops every week.</p>
         <div class="mt-4">
-          <a href="#necklaces" class="btn btn-accent btn-lg me-2">Shop New</a>
-          <a href="#about" class="btn btn-outline-dark btn-lg">Learn More</a>
+          <a href="#combos" class="btn btn-accent btn-lg me-2">Shop Deals</a>
+          <a href="#necklaces" class="btn btn-outline-dark btn-lg">Browse All</a>
         </div>
       </div>
 
@@ -253,6 +539,19 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBOS & HOT DEALS SECTION -->
+<section id="combos" class="combo-section category-section" data-aos="fade-up">
+  <div class="container">
+    <h2>
+      <i class="fas fa-fire"></i>
+      Hot Combos & Deals
+    </h2>
+    <div class="row gy-4" id="combo-grid">
+      <!-- Combo cards will be inserted here -->
     </div>
   </div>
 </section>
@@ -286,26 +585,40 @@
 
 <!-- CART MODAL -->
 <div class="modal fade" id="cartModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
     <div class="modal-content" style="background:#fff;color:#1a1a1a;border:2px solid #ffc0cb">
       <div class="modal-header" style="border-bottom:1px solid #ffc0cb">
-        <h5 class="modal-title">Your Cart</h5>
+        <h5 class="modal-title"><i class="fas fa-shopping-bag me-2"></i>Your Cart</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <div id="cart-items"></div>
-        <div class="d-flex justify-content-between align-items-center mt-3">
-          <div>
-            <small class="text-muted">Shipping info: COD & Prepaid handled via WhatsApp.</small>
+        <div class="mt-4 p-3" style="background: rgba(255,182,193,0.1); border-radius: 10px;">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span style="font-weight: 600;">Subtotal:</span>
+            <span id="cart-subtotal" style="font-size: 1.1rem; font-weight: 700;">₹0</span>
           </div>
-          <div>
-            <strong>Total: </strong> <span id="cart-total">₹0</span>
+          <div class="d-flex justify-content-between align-items-center mb-2" id="discount-row" style="display:none !important;">
+            <span style="font-weight: 600; color: #6e2e4e;">Discount:</span>
+            <span id="cart-discount" style="font-size: 1.1rem; font-weight: 700; color: #6e2e4e;">-₹0</span>
           </div>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center">
+            <span style="font-weight: 700; font-size: 1.2rem;">Total:</span>
+            <span id="cart-total" style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">₹0</span>
+          </div>
+          <small class="text-muted d-block mt-2">
+            <i class="fas fa-info-circle"></i> Shipping & payment handled via WhatsApp (COD/Prepaid)
+          </small>
         </div>
       </div>
       <div class="modal-footer" style="border-top:1px solid #ffc0cb">
-        <button id="clear-cart" class="btn btn-outline-dark">Clear Cart</button>
-        <a id="checkout-whatsapp" class="btn btn-accent" target="_blank">Checkout on WhatsApp</a>
+        <button id="clear-cart" class="btn btn-outline-dark">
+          <i class="fas fa-trash"></i> Clear Cart
+        </button>
+        <a id="checkout-whatsapp" class="btn btn-accent" target="_blank">
+          <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
+        </a>
       </div>
     </div>
   </div>
@@ -352,22 +665,37 @@
 <footer class="mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <h5 style="color:#1a1a1a">IZAH</h5>
+      <div class="col-md-6 mb-4">
+        <h5 style="color:#1a1a1a; font-weight: 700;">IZAH</h5>
         <p class="text-muted">Affordable fashion jewellery for the college look. Weekly drops, limited stocks.</p>
       </div>
-      <div class="col-md-3">
-        <h6 style="color:#1a1a1a">Contact</h6>
-        <p class="text-muted mb-0"><i class="fa fa-phone"></i> WhatsApp: +91 8606577577</p>
-        <p class="text-muted"><i class="fa fa-envelope"></i> email@example.com</p>
+      <div class="col-md-3 mb-4">
+        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 1rem;">Contact Us</h6>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span class="text-muted">+91 8606577577</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span class="text-muted">hello@izah.in</span>
+        </div>
       </div>
-      <div class="col-md-3">
-        <h6 style="color:#1a1a1a">Follow</h6>
-        <a href="https://instagram.com" target="_blank" class="btn btn-outline-dark btn-sm"><i class="fa fa-instagram"></i> @izah</a>
+      <div class="col-md-3 mb-4">
+        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 1rem;">Follow Us</h6>
+        <div>
+          <a href="https://wa.me/918606577577" target="_blank" class="social-icon" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://instagram.com/izah" target="_blank" class="social-icon" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="text-center mt-4 text-muted">© IZAH — All rights reserved</div>
+    <div class="text-center mt-4 pt-3 text-muted" style="border-top: 1px solid #ffc0cb;">
+      © 2024 IZAH — All rights reserved
+    </div>
   </div>
 </footer>
 
@@ -376,6 +704,46 @@
 <script>
   AOS.init({duration:700, once:true});
   const sellerNumber = '918606577577';
+
+  // Combo deals data
+  const combos = [
+    {
+      id: 'combo1',
+      name: 'Romantic Rose Set',
+      description: 'Gold Heart Necklace + Rose Gold Sphere Earrings',
+      originalPrice: 618,
+      salePrice: 499,
+      discount: '20% OFF',
+      image: 'assets/images/Goldheartnecklace1.JPG',
+      products: [7, 19],
+      badge: 'HOT DEAL',
+      inStock: true
+    },
+    {
+      id: 'combo2',
+      name: 'Butterfly Beauty Pack',
+      description: 'Twin Butterfly Necklace + Butterfly Bracelet',
+      originalPrice: 698,
+      salePrice: 579,
+      discount: '17% OFF',
+      image: 'assets/images/Twinbutterflygoldenchainnecklace.JPG',
+      products: [8, 3],
+      badge: 'BEST SELLER',
+      inStock: true
+    },
+    {
+      id: 'combo3',
+      name: 'Complete Elegance Set',
+      description: 'Minimal Heart Necklace + Pearl Earrings + Heart Bracelet',
+      originalPrice: 937,
+      salePrice: 749,
+      discount: '20% OFF',
+      image: 'assets/images/Minimalheartnecklace1.png',
+      products: [17, 26, 1],
+      badge: '🔥 TRENDING',
+      inStock: true
+    }
+  ];
 
   const products = [
   // Bracelets
@@ -400,7 +768,6 @@
   {id: 17, name: 'Minimal Heart Necklace', price: 319, images: ['assets/images/Minimalheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalheartnecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Delicate heart pendant. Classic and versatile.'},
   {id: 18, name: 'Rose Gold Layered Necklace', price: 369, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Beautiful rose gold layered design. Elegant and trendy.'},
   
-
   // Earrings
   {id: 19, name: 'Rose Gold Sphere Earrings', price: 269, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: true, qtyAvailable: 14, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
   {id: 20, name: 'Golden Prism Earrings', price: 289, images: ['assets/images/Goldenprismearrings.JPG'], inStock: true, qtyAvailable: 10, category: 'earrings', description: 'Geometric prism design in gold. Modern and eye-catching.'},
@@ -417,6 +784,62 @@
   let cart = [];
   const fmtINR = n => '₹' + n.toString();
 
+  function calculateDiscount(subtotal) {
+    if (subtotal >= 399) {
+      return { rate: 0.20, amount: Math.round(subtotal * 0.20) };
+    } else if (subtotal >= 299) {
+      return { rate: 0.10, amount: Math.round(subtotal * 0.10) };
+    }
+    return { rate: 0, amount: 0 };
+  }
+
+  function renderCombos() {
+    const grid = document.getElementById('combo-grid');
+    grid.innerHTML = '';
+    
+    combos.forEach(combo => {
+      const col = document.createElement('div');
+      col.className = 'col-md-4';
+      col.innerHTML = `
+        <div class="combo-card" data-aos="flip-left">
+          <div class="combo-badge">${combo.badge}</div>
+          <img src="${combo.image}" alt="${combo.name}">
+          <div class="combo-card-body">
+            <div class="combo-title">${combo.name}</div>
+            <div class="combo-description">${combo.description}</div>
+            <div class="combo-pricing">
+              <span class="combo-original-price">${fmtINR(combo.originalPrice)}</span>
+              <span class="combo-sale-price">${fmtINR(combo.salePrice)}</span>
+              <span class="combo-savings">${combo.discount}</span>
+            </div>
+            <button class="btn btn-accent w-100" onclick="addComboToCart('${combo.id}')">
+              <i class="fas fa-shopping-bag"></i> Add Combo to Cart
+            </button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(col);
+    });
+  }
+
+  function addComboToCart(comboId) {
+    const combo = combos.find(c => c.id === comboId);
+    if (!combo || !combo.inStock) return;
+    
+    const currentCart = getCart();
+    currentCart.push({
+      id: comboId,
+      name: combo.name,
+      price: combo.salePrice,
+      qty: 1,
+      image: combo.image,
+      isCombo: true
+    });
+    saveCart(currentCart);
+    showToast(`${combo.name} added to cart!`);
+    renderCartItems();
+  }
+
   function renderProducts(){
     const categories = ['necklaces', 'earrings', 'bracelets', 'rings'];
     
@@ -429,20 +852,25 @@
       categoryProducts.forEach(p => {
         const soldClass = !p.inStock ? 'img-sold' : '';
         const soldBadge = !p.inStock ? '<div class="sold-overlay">Sold Out</div>' : '';
-        const stockInfo = p.inStock ? `<small class="text-muted">Qty Available: ${p.qtyAvailable}</small>` : '';
+        const stockBadge = p.inStock 
+          ? '<span class="stock-badge in-stock"><i class="fas fa-check-circle"></i> In Stock</span>'
+          : '<span class="stock-badge out-of-stock"><i class="fas fa-times-circle"></i> Out of Stock</span>';
 
         const card = document.createElement('div');
         card.className = 'col-6 col-md-3';
         card.innerHTML = `
-          <div class="card shadow-sm" data-aos="zoom-in" style="cursor:pointer" onclick="openProductDetail(${p.id})">
+          <div class="card shadow-sm" data-aos="zoom-in">
             <div style="position:relative">
               <img src="${p.images[0]}" class="card-img-top ${soldClass}" alt="${p.name}">
               ${soldBadge}
             </div>
             <div class="card-body text-center">
-              <div class="name mb-2">${p.name}</div>
+              <div class="name">${p.name}</div>
               <div class="price mb-2">${fmtINR(p.price)}</div>
-              ${stockInfo}
+              ${stockBadge}
+              <button class="btn-view-product mt-2" onclick="openProductDetail(${p.id})">
+                <i class="fas fa-eye"></i> View Product
+              </button>
             </div>
           </div>
         `;
@@ -468,9 +896,9 @@
     
     const stockDiv = document.getElementById('detail-stock');
     if(product.inStock){
-      stockDiv.innerHTML = `<small class="text-success"><i class="fa fa-check-circle"></i> In Stock </small>`;
+      stockDiv.innerHTML = `<span class="stock-badge in-stock"><i class="fa fa-check-circle"></i> In Stock</span>`;
     } else {
-      stockDiv.innerHTML = `<small class="text-danger"><i class="fa fa-times-circle"></i> Sold Out</small>`;
+      stockDiv.innerHTML = `<span class="stock-badge out-of-stock"><i class="fa fa-times-circle"></i> Sold Out</span>`;
     }
     
     const actionsDiv = document.getElementById('detail-actions');
@@ -536,7 +964,14 @@
     if(!currentProduct) return;
     const qty = parseInt(document.getElementById('modal-qty').value);
     const currentCart = getCart();
-    currentCart.push({id:currentProduct.id, name:currentProduct.name, price:currentProduct.price, qty: qty});
+    currentCart.push({
+      id: currentProduct.id,
+      name: currentProduct.name,
+      price: currentProduct.price,
+      qty: qty,
+      image: currentProduct.images[0],
+      isCombo: false
+    });
     saveCart(currentCart);
     showToast(`${qty}x ${currentProduct.name} added to cart`);
     renderCartItems();
@@ -547,21 +982,6 @@
 
   function getCart(){ return cart; }
   function saveCart(c){ cart = c; updateCartCount(); }
-
-  function addToCart(productId, qty = 1){
-    const product = products.find(x=>x.id===productId);
-    if(!product || !product.inStock) return;
-    
-    if(qty > product.qtyAvailable) {
-      showToast(`Only ${product.qtyAvailable} available!`);
-      return;
-    }
-    
-    const currentCart = getCart();
-    currentCart.push({id:product.id, name:product.name, price:product.price, qty: qty});
-    saveCart(currentCart);
-    showToast(`${qty}x ${product.name} added to cart`);
-  }
 
   function removeFromCart(index){
     const currentCart = getCart();
@@ -586,36 +1006,71 @@
     const container = document.getElementById('cart-items');
     const currentCart = getCart();
     container.innerHTML = '';
+    
     if(currentCart.length===0){ 
-      container.innerHTML = '<p class="text-muted">Your cart is empty.</p>'; 
-      document.getElementById('cart-total').innerText = '₹0'; 
+      container.innerHTML = '<div class="text-center py-4"><i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i><p class="text-muted">Your cart is empty.</p></div>'; 
+      document.getElementById('cart-subtotal').innerText = '₹0';
+      document.getElementById('cart-discount').innerText = '-₹0';
+      document.getElementById('cart-total').innerText = '₹0';
+      document.getElementById('discount-row').style.display = 'none';
       document.getElementById('checkout-whatsapp').href = '#'; 
       return; 
     }
 
-    let total = 0;
+    let subtotal = 0;
     currentCart.forEach((item, idx) => {
       const itemTotal = item.price * item.qty;
-      total += itemTotal;
-      const row = document.createElement('div');
-      row.className = 'd-flex align-items-center justify-content-between py-2 border-bottom';
-      row.innerHTML = `
-        <div>
-          <div style="font-weight:600">${item.name}</div>
-          <small class="text-muted">Qty: ${item.qty} × ${fmtINR(item.price)} = ${fmtINR(itemTotal)}</small>
+      subtotal += itemTotal;
+      
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+        <div class="cart-item-details">
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-info">Qty: ${item.qty} × ${fmtINR(item.price)}</div>
         </div>
-        <div class="text-end">
-          <div style="font-weight:700">${fmtINR(itemTotal)}</div>
-          <button class="btn btn-sm btn-link text-danger remove-item" data-index="${idx}">Remove</button>
+        <div class="cart-item-actions">
+          <div class="cart-item-price">${fmtINR(itemTotal)}</div>
+          <button class="btn btn-sm btn-link text-danger remove-item" data-index="${idx}">
+            <i class="fas fa-trash"></i> Remove
+          </button>
         </div>
       `;
-      container.appendChild(row);
+      container.appendChild(itemDiv);
     });
+
+    // Calculate discount
+    const discount = calculateDiscount(subtotal);
+    const total = subtotal - discount.amount;
+
+    document.getElementById('cart-subtotal').innerText = fmtINR(subtotal);
+    
+    if (discount.amount > 0) {
+      document.getElementById('cart-discount').innerText = `-${fmtINR(discount.amount)}`;
+      document.getElementById('discount-row').style.display = 'flex';
+    } else {
+      document.getElementById('discount-row').style.display = 'none';
+    }
+    
     document.getElementById('cart-total').innerText = fmtINR(total);
 
-    let message = encodeURIComponent(`I'm interested in these items from IZAH:\n`);
-    currentCart.forEach(it => { message += encodeURIComponent(`\n${it.name} (Qty: ${it.qty}) - ₹${it.price * it.qty}\n`); });
-    message += encodeURIComponent(`\nTotal: ₹${total}`);
+    // WhatsApp message with images
+    let message = `Hello! I'd like to order from IZAH:%0A%0A`;
+    
+    currentCart.forEach(item => {
+      message += `*${item.name}*%0AQty: ${item.qty} × ₹${item.price} = ₹${item.price * item.qty}%0A%0A`;
+    });
+    
+    message += `Subtotal: ₹${subtotal}%0A`;
+    
+    if (discount.amount > 0) {
+      message += `Discount (${discount.rate * 100}%): -₹${discount.amount}%0A`;
+    }
+    
+    message += `*Total: ₹${total}*%0A%0A`;
+    message += `Please confirm availability and payment options (COD/Prepaid).`;
+    
     const waLink = `https://wa.me/${sellerNumber}?text=${message}`;
     document.getElementById('checkout-whatsapp').href = waLink;
 
@@ -639,7 +1094,7 @@
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         if(targetSection) {
-          const headerHeight = 130;
+          const headerHeight = 190;
           const targetPosition = targetSection.offsetTop - headerHeight;
           window.scrollTo({
             top: targetPosition,
@@ -651,7 +1106,7 @@
     
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('.category-section');
-      const scrollPos = window.scrollY + 150;
+      const scrollPos = window.scrollY + 200;
       
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -668,44 +1123,73 @@
         }
       });
     });
+
+    renderCombos();
+    renderProducts();
+    renderCartItems();
+    updateCartCount();
+
+    document.getElementById('clear-cart').addEventListener('click', () => {
+      if(confirm('Clear all items from cart?')) {
+        clearCart();
+      }
+    });
+
+    // Hero carousel
+    let heroIndex = 0;
+    const heroItems = document.querySelectorAll('.carousel-item-custom');
+    setInterval(() => {
+      heroItems[heroIndex].classList.remove('active');
+      heroIndex = (heroIndex + 1) % heroItems.length;
+      heroItems[heroIndex].classList.add('active');
+    }, 4000);
+
+    // Rotating hero text
+    const heroTitles = ['Delicate.', 'Elegant.', 'Minimal.', 'Timeless.'];
+    let titleIndex = 0;
+    setInterval(() => {
+      titleIndex = (titleIndex + 1) % heroTitles.length;
+      document.getElementById('hero-title').innerText = heroTitles[titleIndex];
+    }, 2500);
   });
 
-  function showToast(text){
-    const t = document.createElement('div');
-    t.className = 'position-fixed bottom-0 end-0 m-3 p-3 rounded shadow';
-    t.style.background = 'linear-gradient(135deg, #ff69b4, #e91e63)'; 
-    t.style.color = '#fff'; 
-    t.style.zIndex = 9999; 
-    t.style.fontWeight = '500';
-    t.innerText = text;
-    document.body.appendChild(t);
-    setTimeout(()=>{ t.style.opacity = 0; t.style.transition = 'opacity 0.4s'; setTimeout(()=>t.remove(),400); },1200);
+  function showToast(message) {
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      position: fixed;
+      top: 110px;
+      right: 20px;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      font-weight: 600;
+      animation: slideIn 0.3s ease;
+    `;
+    toast.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.style.animation = 'slideOut 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
-    updateCartCount();
-    renderCartItems();
-    document.getElementById('clear-cart').addEventListener('click', () => { if(confirm('Clear cart?')) clearCart(); });
-
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-item-custom');
-    const totalSlides = slides.length;
-    const heroTexts = ['Delicate.', 'Trendy.', 'Affordable.', 'Minimal.'];
-    const heroTitle = document.getElementById('hero-title');
-    
-    function nextSlide(){
-      heroTitle.classList.add('fade-out');
-      setTimeout(() => {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slides[currentSlide].classList.add('active');
-        heroTitle.textContent = heroTexts[currentSlide];
-        heroTitle.classList.remove('fade-out');
-      }, 300);
+  // Add keyframe animations for toast
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes slideIn {
+      from { transform: translateX(400px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
-    setInterval(nextSlide, 3000);
-  });
+    @keyframes slideOut {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(400px); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
 </script>
 </body>
 </html>
