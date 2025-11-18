@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>IZAH — Affordable Fashion Jewellery</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- AOS (Animate On Scroll) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
   <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -26,22 +24,38 @@
       --gold: #d4af37;
       --gold-light: #ffd700;
     }
-    html,body{height:100%;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--primary);scroll-behavior:smooth}
-    a{color:var(--accent)}
     
-    /* Discount Banner */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    html,body{
+      height:100%;
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--primary);
+      scroll-behavior:smooth;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    a{color:var(--accent); text-decoration: none;}
+    
+    /* Discount Banner - Mobile Optimized */
     .discount-banner {
       background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
       color: white;
-      padding: 12px 0;
+      padding: 10px 15px;
       text-align: center;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.8rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      position: fixed;
+      position: relative;
       overflow: hidden;
       z-index: 1030;
+      line-height: 1.4;
     }
+    
     .discount-banner::before {
       content: '';
       position: absolute;
@@ -52,222 +66,315 @@
       background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
       animation: shine 3s infinite;
     }
+    
     @keyframes shine {
       0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
       100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
+    
     .discount-banner .offer-text {
       position: relative;
       z-index: 1;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
+    
     .discount-banner i {
-      margin: 0 8px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      margin: 0 5px;
+      font-size: 0.9rem;
     }
 
-    .navbar{background:#ffffff;backdrop-filter: blur(4px);border-bottom:1px solid #ffc0cb;box-shadow: 0 2px 4px rgba(0,0,0,0.05);padding:0.25rem 0}
-    .brand{font-weight:700;letter-spacing:1px;color:var(--primary)}
-    .logo-container{height:45px;display:flex;align-items:center;justify-content:center}
-    .logo-img{max-height:35px;width:auto}
+    /* Mobile-First Navbar */
+    .navbar{
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ffc0cb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 8px 0;
+      position: fixed;
+      top: 40px;
+      width: 100%;
+      z-index: 1020;
+    }
     
-    /* Tab Menu - Mobile First */
+    .logo-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+    }
+    
+    .logo-img{
+      max-height: 32px;
+      width: auto;
+    }
+    
+    /* Tab Menu - Mobile Swipe */
     .tab-menu{
-      background:#ffffff;
-      border-bottom:1px solid #ffc0cb;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      z-index:1020;
-      padding: 0.5rem 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ffc0cb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 1019;
+      padding: 8px 0;
       overflow-x: auto;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: var(--accent-light) transparent;
+      scrollbar-width: none;
+      position: fixed;
+      top: 84px;
+      width: 100%;
     }
+    
     .tab-menu::-webkit-scrollbar {
-      height: 3px;
+      display: none;
     }
-    .tab-menu::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .tab-menu::-webkit-scrollbar-thumb {
-      background: var(--accent-light);
-      border-radius: 10px;
-    }
+    
     .tab-menu .nav{
-      margin:0;
+      margin: 0;
       flex-wrap: nowrap;
       display: flex;
-      padding: 0 0.5rem;
+      padding: 0 12px;
+      gap: 8px;
     }
+    
     .tab-menu .nav-link{
-      color:#1a1a1a;
-      font-weight:500;
-      padding:0.6rem 1.2rem;
-      transition:all 0.2s ease;
-      border-bottom:3px solid transparent;
-      margin:0 0.25rem;
+      color: #1a1a1a;
+      font-weight: 500;
+      padding: 10px 20px;
+      transition: all 0.2s ease;
+      border-radius: 20px;
       white-space: nowrap;
       font-size: 0.85rem;
-      border-radius: 8px 8px 0 0;
+      background: transparent;
+      border: 2px solid transparent;
     }
-    .tab-menu .nav-link:hover{
-      color:var(--accent);
-      border-bottom-color:var(--accent-light);
-      background:rgba(255,105,180,0.05);
-      transform: translateY(-2px);
+    
+    .tab-menu .nav-link:hover,
+    .tab-menu .nav-link:active{
+      color: var(--accent);
+      background: rgba(255,105,180,0.1);
     }
+    
     .tab-menu .nav-link.active{
-      color:var(--accent);
-      border-bottom-color:var(--accent);
-      background:rgba(255,105,180,0.08);
-      font-weight: 600;
-    }
-
-    /* Hero */
-    .hero{padding:4rem 0 2rem}
-    .hero .title{font-size:2.2rem;font-weight:700;color:var(--primary)}
-    .hero .subtitle{color:var(--muted);margin-top:.4rem}
-
-    /* Carousel */
-    .hero-carousel{position:relative;height:400px;overflow:hidden;border-radius:16px;box-shadow: 0 4px 20px rgba(255,105,180,0.15)}
-    .carousel-item-custom{position:absolute;width:100%;height:100%;opacity:0;transition:opacity 1s ease-in-out}
-    .carousel-item-custom.active{opacity:1}
-    .carousel-item-custom img,.carousel-item-custom video{width:100%;height:100%;object-fit:cover}
-
-    /* Combo Section */
-    .combo-section {
-      background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
-      padding: 3rem 0;
-      margin: 2rem 0 3rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .combo-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-    }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .combo-section h2 {
-      color: #6e2e4e;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 2rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 1;
-    }
-    .combo-section h2 i {
-      color: #6e2e4e;
-      margin-right: 10px;
-    }
-    .combo-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-      transition: all 0.4s ease;
-      position: relative;
-      height: 100%;
-    }
-    .combo-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
-    }
-    .combo-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       color: white;
-      padding: 8px 16px;
-      border-radius: 25px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      animation: bounce 2s infinite;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+
+    /* Hero Section - Mobile */
+    .hero{
+      padding: 140px 0 20px;
     }
-    .combo-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-    .combo-card-body {
-      padding: 1.5rem;
-    }
-    .combo-title {
-      font-size: 1.2rem;
+    
+    .hero .title{
+      font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
     }
-    .combo-description {
+    
+    .hero .subtitle{
       color: var(--muted);
       font-size: 0.9rem;
-      margin-bottom: 1rem;
+      line-height: 1.5;
     }
+
+    /* Hero Carousel - Mobile */
+    .hero-carousel{
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(255,105,180,0.15);
+      margin-top: 20px;
+    }
+    
+    .carousel-item-custom{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .carousel-item-custom.active{
+      opacity: 1;
+    }
+    
+    .carousel-item-custom img,
+    .carousel-item-custom video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Combo Section - Mobile */
+    .combo-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 30px 0;
+      margin: 20px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .combo-section h2 {
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-size: 1.5rem;
+      padding: 0 15px;
+    }
+    
+    .combo-section h2 i {
+      color: var(--gold-light);
+      margin-right: 8px;
+    }
+    
+    .combo-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+    }
+    
+    .combo-card:active {
+      transform: scale(0.98);
+    }
+    
+    .combo-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    
+    .combo-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .combo-card-body {
+      padding: 15px;
+    }
+    
+    .combo-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    
+    .combo-description {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    
     .combo-pricing {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 1rem;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
+    
     .combo-original-price {
       text-decoration: line-through;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
+    
     .combo-sale-price {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--accent-dark);
     }
+    
     .combo-savings {
       background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
       color: white;
       padding: 4px 10px;
       border-radius: 12px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
     }
 
-    /* Product cards */
-    .card{background:var(--card-bg);border:1px solid #ffc0cb;border-radius:14px;box-shadow: 0 2px 8px rgba(255,105,180,0.1);transition: transform 0.3s ease, box-shadow 0.3s ease;height:100%;display:flex;flex-direction:column}
-    .card:hover{transform:translateY(-5px);box-shadow: 0 4px 16px rgba(255,105,180,0.2)}
-    .card-img-top{height:250px;object-fit:cover;border-top-left-radius:14px;border-top-right-radius:14px;flex-shrink:0}
-    .card-body{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding: 1rem;}
-    .card .name{font-size:1rem;font-weight:600;color:var(--primary);min-height:2.4em;margin-bottom: 0.5rem;}
-    .price{color:var(--accent);font-weight:700;font-size: 1.1rem;}
+    /* Product Cards - Mobile Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 4px;
+    }
+    
+    .card{
+      background: var(--card-bg);
+      border: 1px solid #ffc0cb;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(255,105,180,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    
+    .card:active{
+      transform: scale(0.97);
+    }
+    
+    .card-img-top{
+      height: 180px;
+      object-fit: cover;
+      width: 100%;
+    }
+    
+    .card-body{
+      padding: 12px;
+    }
+    
+    .card .name{
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      min-height: 2.4em;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    
+    .price{
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    
     .stock-badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
     }
+    
     .in-stock {
-      background: linear-gradient(135deg, #ffb3d9 0%, #ffb3d9#006928 100%);
-      color: #006928;
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
     }
+    
     .out-of-stock {
       background: #e0e0e0;
       color: #666;
@@ -277,174 +384,318 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       border: none;
       color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 400;
-      transition: all 0.3s ease;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
       width: 100%;
-      margin-top: auto;
+      transition: all 0.2s ease;
     }
-    .btn-view-product:hover {
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+    
+    .btn-view-product:active {
+      transform: scale(0.95);
     }
 
-    .btn-accent{background:linear-gradient(90deg,var(--accent),var(--accent-dark));border:0;color:#fff;transition: all 0.3s ease}
-    .btn-accent:hover{background:linear-gradient(90deg,var(--accent-dark),var(--accent));color:#fff;transform:translateY(-2px)}
-    .btn-accent:active,.btn-accent:focus{transform:translateY(1px)}
-
-    .sold-overlay{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.6);padding:6px 10px;border-radius:20px;color:#fff;font-weight:600;font-size:.8rem}
-    .img-sold{filter:grayscale(60%) brightness(.7)}
+    .btn-accent{
+      background: linear-gradient(90deg,var(--accent),var(--accent-dark));
+      border: 0;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-accent:active{
+      transform: scale(0.95);
+      color: #fff;
+    }
 
     /* Cart badge */
-    .cart-badge{position:relative}
-    .cart-count{position:absolute;right:-10px;top:-8px;background:var(--accent);color:#fff;border-radius:50%;padding:3px 7px;font-size:.75rem}
+    .cart-badge{
+      position: relative;
+      padding: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cart-badge i {
+      font-size: 1.4rem;
+    }
+    
+    .cart-count{
+      position: absolute;
+      right: 0;
+      top: 2px;
+      background: var(--accent-dark);
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      min-width: 18px;
+      text-align: center;
+    }
 
-    /* Cart Items with Images */
+    /* Cart Items - Mobile */
     .cart-item {
       display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
+      gap: 12px;
+      padding: 12px 0;
       border-bottom: 1px solid #ffc0cb;
     }
+    
     .cart-item-img {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       object-fit: cover;
       border-radius: 10px;
       border: 2px solid #ffc0cb;
+      flex-shrink: 0;
     }
+    
     .cart-item-details {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-width: 0;
     }
+    
     .cart-item-name {
       font-weight: 600;
       color: var(--primary);
-      margin-bottom: 0.25rem;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+      line-height: 1.3;
     }
+    
     .cart-item-info {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
+    
     .cart-item-actions {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: space-between;
+      flex-shrink: 0;
     }
+    
     .cart-item-price {
       font-weight: 700;
       color: var(--accent);
-      font-size: 1.1rem;
+      font-size: 1rem;
+    }
+    
+    .remove-item {
+      padding: 4px 8px !important;
+      font-size: 0.75rem;
     }
 
-    /* Footer */
-    footer{padding:2rem 0;color:var(--muted);background:linear-gradient(180deg, rgba(255,240,245,0.3), rgba(255,240,245,0.6));margin-top:3rem}
+    /* Modal - Mobile Optimized */
+    .modal-dialog {
+      margin: 10px;
+    }
+    
+    .product-detail-carousel{
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #f8f9fa;
+    }
+    
+    .carousel-image{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .carousel-nav{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.95);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .carousel-nav:active{
+      transform: translateY(-50%) scale(0.9);
+    }
+    
+    .carousel-nav.prev{left: 10px;}
+    .carousel-nav.next{right: 10px;}
+    
+    .carousel-indicators{
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    
+    .carousel-dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active{
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Footer - Mobile */
+    footer{
+      padding: 30px 0 20px;
+      color: var(--muted);
+      background: linear-gradient(180deg, rgba(255,240,245,0.3), rgba(255,240,245,0.6));
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+    
     .social-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white;
-      margin-right: 10px;
-      transition: all 0.3s ease;
+      margin-right: 12px;
+      transition: all 0.2s ease;
       text-decoration: none;
+      font-size: 1.2rem;
     }
-    .social-icon:hover {
-      transform: translateY(-3px) scale(1.1);
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
-      color: white;
+    
+    .social-icon:active {
+      transform: scale(0.9);
     }
+    
     .contact-item {
       display: flex;
       align-items: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
     }
+    
     .contact-item i {
-      width: 30px;
+      width: 28px;
       color: var(--accent);
+      font-size: 1rem;
     }
 
     /* Category sections */
-    .category-section{scroll-margin-top: 190px}
-
-    /* Product Detail Modal */
-    .product-modal .modal-dialog{max-width:900px}
-    .product-detail-carousel{position:relative;height:450px;overflow:hidden;border-radius:12px;background:#f8f9fa}
-    .carousel-image{width:100%;height:100%;object-fit:contain;transition:opacity 0.4s ease}
-    .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:none;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.2s ease}
-    .carousel-nav:hover{background:rgba(255,255,255,1);transform:translateY(-50%) scale(1.1)}
-    .carousel-nav.prev{left:15px}
-    .carousel-nav.next{right:15px}
-    .carousel-indicators{position:absolute;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
-    .carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.5);border:none;cursor:pointer;transition:all 0.3s ease}
-    .carousel-dot.active{background:var(--accent);width:30px;border-radius:5px}
-
-    /* Small phones */
-    @media(max-width:360px){
-      .tab-menu .nav-link{
-        padding:0.6rem 0.8rem;
-        font-size: 0.8rem;
-        margin:0 0.15rem;
-      }
-      .discount-banner {
-        font-size: 0.8rem;
-        padding: 10px 0;
-      }
-    }
-
-    /* Tablet and up */
-    @media(min-width:768px){
-      .card-img-top{height:280px}
-      .hero .title{font-size:2.8rem}
-      .hero-carousel{height:500px}
-      .logo-img{max-height:40px}
-      .category-section{scroll-margin-top: 170px}
-      .tab-menu{
-        padding: 0.25rem 0;
-      }
-      .tab-menu .nav{
-        justify-content: center;
-        padding: 0 1rem;
-      }
-      .tab-menu .nav-link{
-        padding:0.7rem 2rem;
-        margin:0 0.5rem;
-        font-size: 0.95rem;
-      }
-      .discount-banner {
-        font-size: 1.05rem;
-      }
-      .combo-card img {
-        height: 320px;
-      }
-    }
-
-    /* Desktop */
-    @media(min-width:1024px){
-      .tab-menu .nav-link{
-        padding:0.7rem 2.5rem;
-        font-size: 1rem;
-      }
+    .category-section{
+      scroll-margin-top: 140px;
+      margin-bottom: 30px;
     }
     
-    @media(max-width:767px){
-      .product-detail-carousel{height:320px}
-      .carousel-nav{width:38px;height:38px}
-      .combo-card img {
-        height: 240px;
+    .category-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      padding: 0 4px;
+    }
+
+    /* Sold overlay */
+    .sold-overlay{
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(0,0,0,.75);
+      padding: 4px 10px;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+    
+    .img-sold{
+      filter: grayscale(60%) brightness(.7);
+    }
+
+    /* Toast notification */
+    .toast-notification {
+      position: fixed;
+      top: 130px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      font-weight: 600;
+      font-size: 0.85rem;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    /* Button improvements for mobile */
+    .btn {
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    /* Prevent text selection on double tap */
+    .card, .combo-card, .btn, .nav-link {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Tablet adjustments */
+    @media(min-width:768px){
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
       }
-      .cart-item-img {
-        width: 60px;
-        height: 60px;
+      
+      .card-img-top{height: 240px;}
+      .hero .title{font-size: 2.5rem;}
+      .hero-carousel{height: 400px;}
+      .combo-card img {height: 280px;}
+      .cart-item-img {width: 80px; height: 80px;}
+      
+      .tab-menu .nav{
+        justify-content: center;
+        padding: 0 20px;
       }
+      
+      .tab-menu .nav-link{
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media(min-width:1024px){
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      
+      .card-img-top{height: 280px;}
     }
   </style>
 </head>
@@ -454,18 +705,18 @@
 <div class="discount-banner fixed-top">
   <div class="offer-text">
     <i class="fas fa-gift"></i>
-    <span>Get 10% OFF on orders above ₹299 | 20% OFF on orders above ₹399</span>
+    <span>10% OFF ₹299+ | 20% OFF ₹399+</span>
     <i class="fas fa-sparkles"></i>
   </div>
 </div>
  
 <!-- NAVBAR -->
-<nav class="navbar fixed-top" style="top: 44px">
-  <div class="container-fluid px-4">
+<nav class="navbar">
+  <div class="container-fluid px-3">
     <div class="row w-100 align-items-center">
       <div class="col-2 text-start">
         <div class="cart-badge d-inline-block">
-          <a class="nav-link p-0" style="color:#1a1a1a;font-size:1.1rem" href="#cartModal" data-bs-toggle="modal">
+          <a class="nav-link p-0" style="color:#1a1a1a" href="#cartModal" data-bs-toggle="modal">
             <i class="fa fa-shopping-bag"></i>
           </a>
           <span id="cart-count" class="cart-count" style="display:none">0</span>
@@ -484,44 +735,42 @@
 </nav>
 
 <!-- TAB MENU -->
-<nav class="tab-menu fixed-top" style="top:92px">
-  <div class="container-fluid px-0">
-    <ul class="nav nav-pills mb-0">
-      <li class="nav-item">
-        <a class="nav-link category-link" href="#combos" data-category="combos">
-          <i class="fas fa-fire"></i> Combos & Deals
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link category-link" href="#necklaces" data-category="necklaces">Necklaces</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link category-link" href="#earrings" data-category="earrings">Earrings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link category-link" href="#bracelets" data-category="bracelets">Bracelets</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link category-link" href="#rings" data-category="rings">Rings</a>
-      </li>
-    </ul>
-  </div>
+<nav class="tab-menu">
+  <ul class="nav nav-pills mb-0">
+    <li class="nav-item">
+      <a class="nav-link category-link" href="#combos" data-category="combos">
+        <i class="fas fa-fire"></i> Deals
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link category-link" href="#necklaces" data-category="necklaces">Necklaces</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link category-link" href="#earrings" data-category="earrings">Earrings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link category-link" href="#bracelets" data-category="bracelets">Bracelets</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link category-link" href="#rings" data-category="rings">Rings</a>
+    </li>
+  </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="padding-top:150px">
+<section class="hero">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6" data-aos="fade-right">
+    <div class="row">
+      <div class="col-12">
         <h1 class="title hero-text" id="hero-title">Delicate.</h1>
-        <p class="subtitle">IZAH — minimal fashion jewellery priced for students. Fresh drops every week.</p>
-        <div class="mt-4">
-          <a href="#combos" class="btn btn-accent btn-lg me-2">Shop Deals</a>
-          <a href="#necklaces" class="btn btn-outline-dark btn-lg">Browse All</a>
+        <p class="subtitle">Minimal fashion jewellery priced for students. Fresh drops every week.</p>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <a href="#combos" class="btn btn-accent">Shop Deals</a>
+          <a href="#necklaces" class="btn btn-outline-dark">Browse All</a>
         </div>
       </div>
 
-      <div class="col-md-6 mt-4 mt-md-0" data-aos="fade-left">
+      <div class="col-12">
         <div class="hero-carousel">
           <div class="carousel-item-custom active">
             <img src="assets/images/Goldheartnecklace1.JPG" alt="Jewellery Collection 1">
@@ -544,40 +793,40 @@
 </section>
 
 <!-- COMBOS & HOT DEALS SECTION -->
-<section id="combos" class="combo-section category-section" data-aos="fade-up">
+<section id="combos" class="combo-section category-section">
   <div class="container">
     <h2>
       <i class="fas fa-fire"></i>
-      Hot Combos & Deals
+      Hot Deals
     </h2>
-    <div class="row gy-4" id="combo-grid">
+    <div id="combo-grid">
       <!-- Combo cards will be inserted here -->
     </div>
   </div>
 </section>
 
 <!-- SHOP GRID BY CATEGORIES -->
-<section id="shop" class="pt-4 pb-5">
+<section id="shop" class="pt-3 pb-4">
   <div class="container">
     
-    <div id="necklaces" class="category-section mb-5">
-      <h3 class="mb-3" style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:8px">Necklaces</h3>
-      <div class="product-grid row gy-4"></div>
+    <div id="necklaces" class="category-section">
+      <h3 style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:6px">Necklaces</h3>
+      <div class="product-grid"></div>
     </div>
 
-    <div id="earrings" class="category-section mb-5">
-      <h3 class="mb-3" style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:8px">Earrings</h3>
-      <div class="product-grid row gy-4"></div>
+    <div id="earrings" class="category-section">
+      <h3 style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:6px">Earrings</h3>
+      <div class="product-grid"></div>
     </div>
 
-    <div id="bracelets" class="category-section mb-5">
-      <h3 class="mb-3" style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:8px">Bracelets</h3>
-      <div class="product-grid row gy-4"></div>
+    <div id="bracelets" class="category-section">
+      <h3 style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:6px">Bracelets</h3>
+      <div class="product-grid"></div>
     </div>
 
-    <div id="rings" class="category-section mb-5">
-      <h3 class="mb-3" style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:8px">Rings</h3>
-      <div class="product-grid row gy-4"></div>
+    <div id="rings" class="category-section">
+      <h3 style="color:#1a1a1a;border-bottom:2px solid #ff69b4;display:inline-block;padding-bottom:6px">Rings</h3>
+      <div class="product-grid"></div>
     </div>
 
   </div>
@@ -585,7 +834,7 @@
 
 <!-- CART MODAL -->
 <div class="modal fade" id="cartModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
     <div class="modal-content" style="background:#fff;color:#1a1a1a;border:2px solid #ffc0cb">
       <div class="modal-header" style="border-bottom:1px solid #ffc0cb">
         <h5 class="modal-title"><i class="fas fa-shopping-bag me-2"></i>Your Cart</h5>
@@ -593,30 +842,30 @@
       </div>
       <div class="modal-body">
         <div id="cart-items"></div>
-        <div class="mt-4 p-3" style="background: rgba(255,182,193,0.1); border-radius: 10px;">
+        <div class="mt-3 p-3" style="background: rgba(255,182,193,0.1); border-radius: 10px;">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <span style="font-weight: 600;">Subtotal:</span>
-            <span id="cart-subtotal" style="font-size: 1.1rem; font-weight: 700;">₹0</span>
+            <span style="font-weight: 600; font-size: 0.9rem;">Subtotal:</span>
+            <span id="cart-subtotal" style="font-size: 1rem; font-weight: 700;">₹0</span>
           </div>
           <div class="d-flex justify-content-between align-items-center mb-2" id="discount-row" style="display:none !important;">
-            <span style="font-weight: 600; color: #6e2e4e;">Discount:</span>
-            <span id="cart-discount" style="font-size: 1.1rem; font-weight: 700; color: #6e2e4e;">-₹0</span>
+            <span style="font-weight: 600; color: #38ef7d; font-size: 0.9rem;">Discount:</span>
+            <span id="cart-discount" style="font-size: 1rem; font-weight: 700; color: #38ef7d;">-₹0</span>
           </div>
           <hr>
           <div class="d-flex justify-content-between align-items-center">
-            <span style="font-weight: 700; font-size: 1.2rem;">Total:</span>
+            <span style="font-weight: 700; font-size: 1.1rem;">Total:</span>
             <span id="cart-total" style="font-size: 1.3rem; font-weight: 700; color: var(--accent);">₹0</span>
           </div>
-          <small class="text-muted d-block mt-2">
-            <i class="fas fa-info-circle"></i> Shipping & payment handled via WhatsApp (COD/Prepaid)
+          <small class="text-muted d-block mt-2" style="font-size: 0.75rem;">
+            <i class="fas fa-info-circle"></i> Shipping via WhatsApp (COD/Prepaid)
           </small>
         </div>
       </div>
-      <div class="modal-footer" style="border-top:1px solid #ffc0cb">
-        <button id="clear-cart" class="btn btn-outline-dark">
-          <i class="fas fa-trash"></i> Clear Cart
+      <div class="modal-footer" style="border-top:1px solid #ffc0cb; gap: 8px;">
+        <button id="clear-cart" class="btn btn-outline-dark btn-sm">
+          <i class="fas fa-trash"></i> Clear
         </button>
-        <a id="checkout-whatsapp" class="btn btn-accent" target="_blank">
+        <a id="checkout-whatsapp" class="btn btn-accent flex-grow-1" target="_blank">
           <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
         </a>
       </div>
@@ -626,7 +875,7 @@
 
 <!-- PRODUCT DETAIL MODAL -->
 <div class="modal fade product-modal" id="productModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
     <div class="modal-content" style="background:#fff;color:#1a1a1a;border:2px solid #ffc0cb">
       <div class="modal-header" style="border-bottom:1px solid #ffc0cb">
         <h5 class="modal-title" id="productModalTitle"></h5>
@@ -634,7 +883,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-12">
             <div class="product-detail-carousel">
               <img id="carousel-main-image" class="carousel-image" src="" alt="">
               <button class="carousel-nav prev" onclick="changeImage(-1)">
@@ -646,12 +895,12 @@
               <div class="carousel-indicators" id="carousel-indicators"></div>
             </div>
           </div>
-          <div class="col-md-5 mt-3 mt-md-0">
-            <h4 id="detail-name" class="mb-3"></h4>
-            <div class="mb-3">
+          <div class="col-12 mt-3">
+            <h4 id="detail-name" class="mb-2" style="font-size: 1.2rem;"></h4>
+            <div class="mb-2">
               <span class="price fs-4" id="detail-price"></span>
             </div>
-            <p id="detail-description" class="text-muted mb-3"></p>
+            <p id="detail-description" class="text-muted mb-3" style="font-size: 0.9rem;"></p>
             <div id="detail-stock" class="mb-3"></div>
             <div id="detail-actions"></div>
           </div>
@@ -662,15 +911,15 @@
 </div>
 
 <!-- FOOTER -->
-<footer class="mt-5">
+<footer>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 mb-4">
-        <h5 style="color:#1a1a1a; font-weight: 700;">IZAH</h5>
-        <p class="text-muted">Affordable fashion jewellery for the college look. Weekly drops, limited stocks.</p>
+      <div class="col-12 mb-3">
+        <h5 style="color:#1a1a1a; font-weight: 700; font-size: 1.1rem;">IZAH</h5>
+        <p class="text-muted" style="font-size: 0.85rem;">Affordable fashion jewellery for the college look. Weekly drops, limited stocks.</p>
       </div>
-      <div class="col-md-3 mb-4">
-        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 1rem;">Contact Us</h6>
+      <div class="col-6 mb-3">
+        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.95rem;">Contact</h6>
         <div class="contact-item">
           <i class="fas fa-phone"></i>
           <span class="text-muted">+91 8606577577</span>
@@ -680,8 +929,8 @@
           <span class="text-muted">hello@izah.in</span>
         </div>
       </div>
-      <div class="col-md-3 mb-4">
-        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 1rem;">Follow Us</h6>
+      <div class="col-6 mb-3">
+        <h6 style="color:#1a1a1a; font-weight: 600; margin-bottom: 0.75rem; font-size: 0.95rem;">Follow</h6>
         <div>
           <a href="https://wa.me/918606577577" target="_blank" class="social-icon" title="WhatsApp">
             <i class="fab fa-whatsapp"></i>
@@ -693,16 +942,14 @@
       </div>
     </div>
 
-    <div class="text-center mt-4 pt-3 text-muted" style="border-top: 1px solid #ffc0cb;">
+    <div class="text-center mt-3 pt-3 text-muted" style="border-top: 1px solid #ffc0cb; font-size: 0.8rem;">
       © 2024 IZAH — All rights reserved
     </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-  AOS.init({duration:700, once:true});
   const sellerNumber = '918606577577';
 
   // Combo deals data
@@ -746,40 +993,40 @@
   ];
 
   const products = [
-  // Bracelets
-  {id: 1, name: 'Gold Heart Double Layer Bracelet', price: 299, images: ['assets/images/Goldheartdoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 10, category: 'bracelets', description: 'Elegant double-layered bracelet with a delicate gold heart charm. Perfect for everyday wear.'},
-  {id: 2, name: 'Halo Heart Double Layer Bracelet', price: 319, images: ['assets/images/Haloheartdoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 8, category: 'bracelets', description: 'Stunning halo heart design with double chain layers. A must-have accessory.'},
-  {id: 3, name: 'Butterfly Gold Bracelet', price: 329, images: ['assets/images/Butterflygoldbracelet.JPG'], inStock: true, qtyAvailable: 7, category: 'bracelets', description: 'Beautiful butterfly charm bracelet in gold finish. Adds a touch of elegance to any outfit.'},
-  {id: 4, name: 'Elegant Star Bracelet', price: 289, images: ['assets/images/Elegantstarbracelet.JPG'], inStock: true, qtyAvailable: 12, category: 'bracelets', description: 'Minimalist star charm bracelet. Perfect for those who love subtle elegance.'},
-  {id: 5, name: 'Star Double Layered Gold Bracelet', price: 309, images: ['assets/images/Stardoublelayeredgolfbracelet.JPG'], inStock: true, qtyAvailable: 9, category: 'bracelets', description: 'Double-layered design with star charm. Versatile and stylish.'},
-  {id: 6, name: 'Gold Double Layer Bracelet', price: 299, images: ['assets/images/Golddoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 11, category: 'bracelets', description: 'Classic double-layer gold bracelet. Simple yet sophisticated.'},
+    // Bracelets
+    {id: 1, name: 'Gold Heart Double Layer Bracelet', price: 299, images: ['assets/images/Goldheartdoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 10, category: 'bracelets', description: 'Elegant double-layered bracelet with a delicate gold heart charm. Perfect for everyday wear.'},
+    {id: 2, name: 'Halo Heart Double Layer Bracelet', price: 319, images: ['assets/images/Haloheartdoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 8, category: 'bracelets', description: 'Stunning halo heart design with double chain layers. A must-have accessory.'},
+    {id: 3, name: 'Butterfly Gold Bracelet', price: 329, images: ['assets/images/Butterflygoldbracelet.JPG'], inStock: true, qtyAvailable: 7, category: 'bracelets', description: 'Beautiful butterfly charm bracelet in gold finish. Adds a touch of elegance to any outfit.'},
+    {id: 4, name: 'Elegant Star Bracelet', price: 289, images: ['assets/images/Elegantstarbracelet.JPG'], inStock: true, qtyAvailable: 12, category: 'bracelets', description: 'Minimalist star charm bracelet. Perfect for those who love subtle elegance.'},
+    {id: 5, name: 'Star Double Layered Gold Bracelet', price: 309, images: ['assets/images/Stardoublelayeredgolfbracelet.JPG'], inStock: true, qtyAvailable: 9, category: 'bracelets', description: 'Double-layered design with star charm. Versatile and stylish.'},
+    {id: 6, name: 'Gold Double Layer Bracelet', price: 299, images: ['assets/images/Golddoublelayerbracelet.JPG'], inStock: true, qtyAvailable: 11, category: 'bracelets', description: 'Classic double-layer gold bracelet. Simple yet sophisticated.'},
 
-  // Necklaces
-  {id: 7, name: 'Gold Heart Necklace', price: 349, images: ['assets/images/Goldheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Goldheartnecklace2.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Delicate gold heart pendant necklace. A timeless piece for any jewelry collection.'},
-  {id: 8, name: 'Twin Butterfly Golden Chain Necklace', price: 369, images: ['assets/images/Twinbutterflygoldenchainnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Twinbutterflygoldenchainnecklace1.png'], inStock: true, qtyAvailable: 8, category: 'necklaces', description: 'Twin butterfly charms on a golden chain. Feminine and graceful.'},
-  {id: 9, name: 'Butterfly Y Chain Necklace', price: 359, images: ['assets/images/Butterflyychainnecklace.JPG','assets/images/Goldheartnecklace1.JPG'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Trendy Y-chain design with butterfly pendant. Makes a statement.'},
-  {id: 10, name: 'Butterfly Drop Necklace', price: 379, images: ['assets/images/Butterflydropnecklace.png'], inStock: true, qtyAvailable: 6, category: 'necklaces', description: 'Elegant butterfly drop pendant. Perfect for special occasions.'},
-  {id: 11, name: 'Rose Gold Layered Necklace', price: 399, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Luxurious rose gold layered necklace. Adds sophistication to any look.'},
-  {id: 12, name: 'Bow Snake Necklace', price: 349, images: ['assets/images/Bowsnakenecklace.JPG','assets/images/Bowsnakenecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Unique bow design with snake chain. Modern and chic.'},
-  {id: 13, name: 'Double Layered Snake Chain Necklace', price: 389, images: ['assets/images/Doublelayeredsnakechainnecklace.JPG','assets/images/Doublelayeredsnakechainnecklace1.png'], inStock: true, qtyAvailable: 7, category: 'necklaces', description: 'Sleek double-layered snake chain. Minimalist elegance.'},
-  {id: 14, name: 'Elegant Bow Necklace', price: 339, images: ['assets/images/ElegantBownecklace.png'], inStock: true, qtyAvailable: 8, category: 'necklaces', description: 'Charming bow pendant necklace. Sweet and elegant.'},
-  {id: 15, name: 'Clover Double Chain Necklace', price: 359, images: ['assets/images/Cloverdoublechainnecklace.JPG','assets/images/Cloverdoublechainnecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Lucky clover charm with double chain. Stylish and meaningful.'},
-  {id: 16, name: 'Minimal Butterfly Necklace', price: 299, images: ['assets/images/Minimalbutterflynecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalbutterflynecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Minimalist butterfly pendant. Simple and beautiful.'},
-  {id: 17, name: 'Minimal Heart Necklace', price: 319, images: ['assets/images/Minimalheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalheartnecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Delicate heart pendant. Classic and versatile.'},
-  {id: 18, name: 'Rose Gold Layered Necklace', price: 369, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Beautiful rose gold layered design. Elegant and trendy.'},
-  
-  // Earrings
-  {id: 19, name: 'Rose Gold Sphere Earrings', price: 269, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: true, qtyAvailable: 14, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
-  {id: 20, name: 'Golden Prism Earrings', price: 289, images: ['assets/images/Goldenprismearrings.JPG'], inStock: true, qtyAvailable: 10, category: 'earrings', description: 'Geometric prism design in gold. Modern and eye-catching.'},
-  {id: 21, name: 'Flower Cluster Earrings', price: 279, images: ['assets/images/Flowerclusterearrings.JPG'], inStock: true, qtyAvailable: 9, category: 'earrings', description: 'Delicate flower cluster studs. Feminine and charming.'},
-  {id: 22, name: 'Gold Huggie Hoop Earrings', price: 299, images: ['assets/images/Goldhuggiehoopearrings.JPG','assets/images/Goldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 8, category: 'earrings', description: 'Classic gold huggie hoops. Versatile and stylish.'},
-  {id: 23, name: 'Swirl Earrings', price: 259, images: ['assets/images/Swirlearrings.JPG','assets/images/Swirlearrings1.png'], inStock: true, qtyAvailable: 15, category: 'earrings', description: 'Unique swirl design. Modern and elegant.'},
-  {id: 24, name: 'Rose Gold Huggie Hoop Earrings', price: 309, images: ['assets/images/Rosegoldhuggiehoopearrings.JPG','assets/images/Rosegoldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 7, category: 'earrings', description: 'Rose gold huggie hoops. Chic and sophisticated.'},
-  {id: 25, name: 'Vema Rose Gold Earrings', price: 289, images: ['assets/images/Vemarosegoldearring.JPG'], inStock: true, qtyAvailable: 10, category: 'earrings', description: 'Elegant Vema design in rose gold. Perfect for any occasion.'},
-  {id: 26, name: 'Pearl Elegant Rose Gold Earrings', price: 319, images: ['assets/images/Pearlelegantrosegoldearrings.JPG','assets/images/Pearlelegantrosegoldearrings1.JPG'], inStock: true, qtyAvailable: 12, category: 'earrings', description: 'Beautiful pearl studs in rose gold. Classic elegance.'},
-  {id: 27, name: 'Halo Stud Earrings', price: 289, images: ['assets/images/Halostudearrings.JPG'], inStock: true, qtyAvailable: 9, category: 'earrings', description: 'Stunning halo design studs. Sparkle and shine.'},
-  {id: 28, name: 'Vema Silver Earrings', price: 279, images: ['assets/images/Vemasilverearrings.JPG'], inStock: true, qtyAvailable: 11, category: 'earrings', description: 'Elegant Vema design in silver. Versatile and beautiful.'}
-];
+    // Necklaces
+    {id: 7, name: 'Gold Heart Necklace', price: 349, images: ['assets/images/Goldheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Goldheartnecklace2.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Delicate gold heart pendant necklace. A timeless piece for any jewelry collection.'},
+    {id: 8, name: 'Twin Butterfly Golden Chain Necklace', price: 369, images: ['assets/images/Twinbutterflygoldenchainnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Twinbutterflygoldenchainnecklace1.png'], inStock: true, qtyAvailable: 8, category: 'necklaces', description: 'Twin butterfly charms on a golden chain. Feminine and graceful.'},
+    {id: 9, name: 'Butterfly Y Chain Necklace', price: 359, images: ['assets/images/Butterflyychainnecklace.JPG','assets/images/Goldheartnecklace1.JPG'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Trendy Y-chain design with butterfly pendant. Makes a statement.'},
+    {id: 10, name: 'Butterfly Drop Necklace', price: 379, images: ['assets/images/Butterflydropnecklace.png'], inStock: true, qtyAvailable: 6, category: 'necklaces', description: 'Elegant butterfly drop pendant. Perfect for special occasions.'},
+    {id: 11, name: 'Rose Gold Layered Necklace', price: 399, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Luxurious rose gold layered necklace. Adds sophistication to any look.'},
+    {id: 12, name: 'Bow Snake Necklace', price: 349, images: ['assets/images/Bowsnakenecklace.JPG','assets/images/Bowsnakenecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Unique bow design with snake chain. Modern and chic.'},
+    {id: 13, name: 'Double Layered Snake Chain Necklace', price: 389, images: ['assets/images/Doublelayeredsnakechainnecklace.JPG','assets/images/Doublelayeredsnakechainnecklace1.png'], inStock: true, qtyAvailable: 7, category: 'necklaces', description: 'Sleek double-layered snake chain. Minimalist elegance.'},
+    {id: 14, name: 'Elegant Bow Necklace', price: 339, images: ['assets/images/ElegantBownecklace.png'], inStock: true, qtyAvailable: 8, category: 'necklaces', description: 'Charming bow pendant necklace. Sweet and elegant.'},
+    {id: 15, name: 'Clover Double Chain Necklace', price: 359, images: ['assets/images/Cloverdoublechainnecklace.JPG','assets/images/Cloverdoublechainnecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Lucky clover charm with double chain. Stylish and meaningful.'},
+    {id: 16, name: 'Minimal Butterfly Necklace', price: 299, images: ['assets/images/Minimalbutterflynecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalbutterflynecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Minimalist butterfly pendant. Simple and beautiful.'},
+    {id: 17, name: 'Minimal Heart Necklace', price: 319, images: ['assets/images/Minimalheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalheartnecklace1.png'], inStock: true, qtyAvailable: 10, category: 'necklaces', description: 'Delicate heart pendant. Classic and versatile.'},
+    {id: 18, name: 'Rose Gold Layered Necklace', price: 369, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 9, category: 'necklaces', description: 'Beautiful rose gold layered design. Elegant and trendy.'},
+    
+    // Earrings
+    {id: 19, name: 'Rose Gold Sphere Earrings', price: 269, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: true, qtyAvailable: 14, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
+    {id: 20, name: 'Golden Prism Earrings', price: 289, images: ['assets/images/Goldenprismearrings.JPG'], inStock: true, qtyAvailable: 10, category: 'earrings', description: 'Geometric prism design in gold. Modern and eye-catching.'},
+    {id: 21, name: 'Flower Cluster Earrings', price: 279, images: ['assets/images/Flowerclusterearrings.JPG'], inStock: true, qtyAvailable: 9, category: 'earrings', description: 'Delicate flower cluster studs. Feminine and charming.'},
+    {id: 22, name: 'Gold Huggie Hoop Earrings', price: 299, images: ['assets/images/Goldhuggiehoopearrings.JPG','assets/images/Goldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 8, category: 'earrings', description: 'Classic gold huggie hoops. Versatile and stylish.'},
+    {id: 23, name: 'Swirl Earrings', price: 259, images: ['assets/images/Swirlearrings.JPG','assets/images/Swirlearrings1.png'], inStock: true, qtyAvailable: 15, category: 'earrings', description: 'Unique swirl design. Modern and elegant.'},
+    {id: 24, name: 'Rose Gold Huggie Hoop Earrings', price: 309, images: ['assets/images/Rosegoldhuggiehoopearrings.JPG','assets/images/Rosegoldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 7, category: 'earrings', description: 'Rose gold huggie hoops. Chic and sophisticated.'},
+    {id: 25, name: 'Vema Rose Gold Earrings', price: 289, images: ['assets/images/Vemarosegoldearring.JPG'], inStock: true, qtyAvailable: 10, category: 'earrings', description: 'Elegant Vema design in rose gold. Perfect for any occasion.'},
+    {id: 26, name: 'Pearl Elegant Rose Gold Earrings', price: 319, images: ['assets/images/Pearlelegantrosegoldearrings.JPG','assets/images/Pearlelegantrosegoldearrings1.JPG'], inStock: true, qtyAvailable: 12, category: 'earrings', description: 'Beautiful pearl studs in rose gold. Classic elegance.'},
+    {id: 27, name: 'Halo Stud Earrings', price: 289, images: ['assets/images/Halostudearrings.JPG'], inStock: true, qtyAvailable: 9, category: 'earrings', description: 'Stunning halo design studs. Sparkle and shine.'},
+    {id: 28, name: 'Vema Silver Earrings', price: 279, images: ['assets/images/Vemasilverearrings.JPG'], inStock: true, qtyAvailable: 11, category: 'earrings', description: 'Elegant Vema design in silver. Versatile and beautiful.'}
+  ];
 
   let cart = [];
   const fmtINR = n => '₹' + n.toString();
@@ -799,9 +1046,9 @@
     
     combos.forEach(combo => {
       const col = document.createElement('div');
-      col.className = 'col-md-4';
+      col.className = 'mb-3';
       col.innerHTML = `
-        <div class="combo-card" data-aos="flip-left">
+        <div class="combo-card">
           <div class="combo-badge">${combo.badge}</div>
           <img src="${combo.image}" alt="${combo.name}">
           <div class="combo-card-body">
@@ -813,7 +1060,7 @@
               <span class="combo-savings">${combo.discount}</span>
             </div>
             <button class="btn btn-accent w-100" onclick="addComboToCart('${combo.id}')">
-              <i class="fas fa-shopping-bag"></i> Add Combo to Cart
+              <i class="fas fa-shopping-bag"></i> Add to Cart
             </button>
           </div>
         </div>
@@ -857,9 +1104,8 @@
           : '<span class="stock-badge out-of-stock"><i class="fas fa-times-circle"></i> Out of Stock</span>';
 
         const card = document.createElement('div');
-        card.className = 'col-6 col-md-3';
         card.innerHTML = `
-          <div class="card shadow-sm" data-aos="zoom-in">
+          <div class="card shadow-sm">
             <div style="position:relative">
               <img src="${p.images[0]}" class="card-img-top ${soldClass}" alt="${p.name}">
               ${soldBadge}
@@ -869,7 +1115,7 @@
               <div class="price mb-2">${fmtINR(p.price)}</div>
               ${stockBadge}
               <button class="btn-view-product mt-2" onclick="openProductDetail(${p.id})">
-                <i class="fas fa-eye"></i> View Product
+                <i class="fas fa-eye"></i> View
               </button>
             </div>
           </div>
@@ -904,10 +1150,10 @@
     const actionsDiv = document.getElementById('detail-actions');
     if(product.inStock){
       actionsDiv.innerHTML = `
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <button class="btn btn-sm btn-outline-dark qty-btn-modal" onclick="adjustModalQty(-1)">-</button>
-          <input type="number" class="form-control form-control-sm text-center" id="modal-qty" value="1" min="1" max="${product.qtyAvailable}" style="width:70px" readonly>
-          <button class="btn btn-sm btn-outline-dark qty-btn-modal" onclick="adjustModalQty(1)">+</button>
+        <div class="d-flex align-items-center gap-2 mb-3 justify-content-center">
+          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(-1)" style="width:40px;height:40px">-</button>
+          <input type="number" class="form-control form-control-sm text-center" id="modal-qty" value="1" min="1" max="${product.qtyAvailable}" style="width:60px;font-weight:700" readonly>
+          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(1)" style="width:40px;height:40px">+</button>
         </div>
         <button class="btn btn-accent w-100" onclick="addToCartFromModal()">
           <i class="fa fa-shopping-bag"></i> Add to Cart
@@ -932,19 +1178,21 @@
     const indicators = document.getElementById('carousel-indicators');
     indicators.innerHTML = '';
     
-    currentProduct.images.forEach((img, idx) => {
-      const dot = document.createElement('button');
-      dot.className = `carousel-dot ${idx === currentImageIndex ? 'active' : ''}`;
-      dot.onclick = () => {
-        currentImageIndex = idx;
-        updateCarouselImages();
-      };
-      indicators.appendChild(dot);
-    });
+    if(currentProduct.images.length > 1) {
+      currentProduct.images.forEach((img, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${idx === currentImageIndex ? 'active' : ''}`;
+        dot.onclick = () => {
+          currentImageIndex = idx;
+          updateCarouselImages();
+        };
+        indicators.appendChild(dot);
+      });
+    }
   }
 
   function changeImage(direction){
-    if(!currentProduct) return;
+    if(!currentProduct || currentProduct.images.length <= 1) return;
     currentImageIndex += direction;
     if(currentImageIndex < 0) currentImageIndex = currentProduct.images.length - 1;
     if(currentImageIndex >= currentProduct.images.length) currentImageIndex = 0;
@@ -973,7 +1221,7 @@
       isCombo: false
     });
     saveCart(currentCart);
-    showToast(`${qty}x ${currentProduct.name} added to cart`);
+    showToast(`${qty}x ${currentProduct.name} added!`);
     renderCartItems();
     
     const productModal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
@@ -1008,7 +1256,7 @@
     container.innerHTML = '';
     
     if(currentCart.length===0){ 
-      container.innerHTML = '<div class="text-center py-4"><i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i><p class="text-muted">Your cart is empty.</p></div>'; 
+      container.innerHTML = '<div class="text-center py-5"><i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i><p class="text-muted">Your cart is empty.</p></div>'; 
       document.getElementById('cart-subtotal').innerText = '₹0';
       document.getElementById('cart-discount').innerText = '-₹0';
       document.getElementById('cart-total').innerText = '₹0';
@@ -1032,7 +1280,7 @@
         </div>
         <div class="cart-item-actions">
           <div class="cart-item-price">${fmtINR(itemTotal)}</div>
-          <button class="btn btn-sm btn-link text-danger remove-item" data-index="${idx}">
+          <button class="btn btn-sm btn-link text-danger remove-item p-0" data-index="${idx}">
             <i class="fas fa-trash"></i> Remove
           </button>
         </div>
@@ -1040,7 +1288,6 @@
       container.appendChild(itemDiv);
     });
 
-    // Calculate discount
     const discount = calculateDiscount(subtotal);
     const total = subtotal - discount.amount;
 
@@ -1055,7 +1302,6 @@
     
     document.getElementById('cart-total').innerText = fmtINR(total);
 
-    // WhatsApp message with images
     let message = `Hello! I'd like to order from IZAH:%0A%0A`;
     
     currentCart.forEach(item => {
@@ -1094,7 +1340,7 @@
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         if(targetSection) {
-          const headerHeight = 190;
+          const headerHeight = 140;
           const targetPosition = targetSection.offsetTop - headerHeight;
           window.scrollTo({
             top: targetPosition,
@@ -1106,7 +1352,7 @@
     
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('.category-section');
-      const scrollPos = window.scrollY + 200;
+      const scrollPos = window.scrollY + 150;
       
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
