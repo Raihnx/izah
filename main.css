@@ -501,7 +501,7 @@
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.85rem;
-      width: 50%;
+      width: 60%;
       transition: all 0.2s ease;
     }
     
@@ -771,3 +771,4 @@
       .card-img-top{height: 280px;}
       .hero-carousel{height: 500px;}
     }
+
