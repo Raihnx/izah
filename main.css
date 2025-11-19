@@ -237,7 +237,7 @@
     /* Hero Section - Mobile */
     .hero{
       padding: 20px 0;
-      text-align: center;
+      text-align: left;
     }
     
     .hero .title{
@@ -284,25 +284,11 @@
     }
 
     /* Buttons */
-    .btn-accent{
-      background: linear-gradient(90deg,var(--accent),var(--accent-dark));
-      border: 0;
-      color: #fff;
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 25px;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-    
-    .btn-accent:active{
-      transform: scale(0.95);
-      color: #fff;
-    }
+   
 
     .btn-outline-dark {
-      border: 2px solid var(--primary);
-      color: var(--primary);
+      border: 1px solid var(--primary);
+    
       padding: 12px 24px;
       border-radius: 25px;
       font-weight: 600;
@@ -318,7 +304,7 @@
 
     /* Combo Section - Mobile */
     .combo-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(0deg, #ffffff 0%,#f7e9f0 40%, #ffffff 100%);
       padding: 30px 0;
       margin: 20px 0;
       position: relative;
@@ -326,8 +312,8 @@
     }
     
     .combo-section h2 {
-      color: white;
-      font-weight: 700;
+      color: #6e2e4e;
+      font-weight: 500;
       text-align: center;
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -336,7 +322,7 @@
     }
     
     .combo-section h2 i {
-      color: var(--gold-light);
+      color: var(#6e2e4e);
       margin-right: 8px;
     }
     
@@ -353,19 +339,7 @@
       transform: scale(0.98);
     }
     
-    .combo-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.75rem;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
+  
     
     .combo-card img {
       width: 100%;
@@ -412,8 +386,8 @@
     }
     
     .combo-savings {
-      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      color: white;
+      background: white;
+      color: rgb(0, 110, 7);
       padding: 4px 10px;
       border-radius: 12px;
       font-size: 0.7rem;
@@ -483,25 +457,32 @@
       margin-bottom: 8px;
     }
     
-    .in-stock {
-      background: linear-gradient(135deg, var(--card-bg) 0%,var(--card-bg)  100%);
-      color: rgb(9, 91, 5);
-    }
+
     
     .out-of-stock {
       background: #e0e0e0;
       color: #666;
     }
-
-    .btn-view-product {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      border: none;
-      color: white;
+    .btn-view-product-combo {
+      background-color: white;
+      border: 1px solid black;
+      color: black;
       padding: 10px 16px;
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.85rem;
-      width: 60%;
+      width: 50%;
+      transition: all 0.2s ease;
+    }
+    .btn-view-product {
+      background-color: var(--card-bg);
+      border: 1px solid #6e2e4e;
+      color: #6e2e4e;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      width: 50%;
       transition: all 0.2s ease;
     }
     
@@ -771,4 +752,3 @@
       .card-img-top{height: 280px;}
       .hero-carousel{height: 500px;}
     }
-
