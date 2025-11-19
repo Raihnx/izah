@@ -11,7 +11,6 @@ const sellerNumber = '918606577577';
       discount: '20% OFF',
       image: 'assets/images/Goldheartnecklace1.JPG',
       products: [7, 19],
-      badge: 'HOT DEAL',
       inStock: true
     },
     {
@@ -23,7 +22,6 @@ const sellerNumber = '918606577577';
       discount: '17% OFF',
       image: 'assets/images/Twinbutterflygoldenchainnecklace.JPG',
       products: [8, 3],
-      badge: 'BEST SELLER',
       inStock: true
     },
     {
@@ -35,7 +33,6 @@ const sellerNumber = '918606577577';
       discount: '20% OFF',
       image: 'assets/images/Minimalheartnecklace1.png',
       products: [17, 26, 1],
-      badge: '🔥 TRENDING',
       inStock: true
     }
   ];
@@ -97,7 +94,7 @@ const sellerNumber = '918606577577';
       col.className = 'mb-3';
       col.innerHTML = `
         <div class="combo-card" onclick="openComboDetail('${combo.id}')">
-          <div class="combo-badge">${combo.badge}</div>
+          
           <img src="${combo.image}" alt="${combo.name}">
           <div class="combo-card-body">
             <div class="combo-title">${combo.name}</div>
@@ -107,8 +104,8 @@ const sellerNumber = '918606577577';
               <span class="combo-sale-price">${fmtINR(combo.salePrice)}</span>
               <span class="combo-savings">${combo.discount}</span>
             </div>
-            <button class="btn-view-product w-100" onclick="event.stopPropagation(); openComboDetail('${combo.id}')">
-              <i class="fas fa-eye"></i> View
+            <button class="btn-view-product-combo w-100" onclick="event.stopPropagation(); openComboDetail('${combo.id}')">
+              View
             </button>
           </div>
         </div>
@@ -194,7 +191,7 @@ const sellerNumber = '918606577577';
               <div class="name">${p.name}</div>
               <div class="price mb-2">${fmtINR(p.price)}</div>
               <button class="btn-view-product mt-2" onclick="openProductDetail(${p.id})">
-                <i class="fas fa-eye"></i> View
+                 View
               </button>
             </div>
           </div>
