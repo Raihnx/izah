@@ -191,7 +191,7 @@ const sellerNumber = '918606577577';
     
     const stockDiv = document.getElementById('detail-stock');
     if(product.inStock){
-      stockDiv.innerHTML = `<span class="stock-badge in-stock"><i class="fa fa-check-circle"></i> In Stock</span>`;
+      stockDiv.innerHTML = `<span class="stock-badge in-stock"><i class="fa fa-check-circle"></i></span>`;
     } else {
       stockDiv.innerHTML = `<span class="stock-badge out-of-stock"><i class="fa fa-times-circle"></i> Sold Out</span>`;
     }
@@ -490,4 +490,5 @@ const sellerNumber = '918606577577';
       titleIndex = (titleIndex + 1) % heroTitles.length;
       document.getElementById('hero-title').innerText = heroTitles[titleIndex];
     }, 2500);
+
   });
