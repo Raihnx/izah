@@ -137,7 +137,7 @@ const sellerNumber = '918606577577';
     document.getElementById('detail-price').innerHTML = `
       <span style="text-decoration: line-through; color: var(--muted); font-size: 1rem; margin-right: 8px;">${fmtINR(combo.originalPrice)}</span>
       <span style="color: var(--accent-dark);">${fmtINR(combo.salePrice)}</span>
-      <span style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-left: 8px;">${combo.discount}</span>
+      <span style="background: white; color:rgb(0, 110, 7) ; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin-left: 8px;">${combo.discount}</span>
     `;
     document.getElementById('detail-description').innerText = combo.description;
     
