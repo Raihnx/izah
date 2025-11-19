@@ -141,7 +141,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.5rem;  
     }
     
     .discount-banner i {
@@ -478,14 +478,14 @@
       display: inline-block;
       padding: 3px 10px;
       border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.5rem;
+      font-weight: 400;
       margin-bottom: 8px;
     }
     
     .in-stock {
-      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      color: white;
+      background: linear-gradient(135deg, var(--card-bg) 0%,var(--card-bg)  100%);
+      color: rgb(9, 91, 5);
     }
     
     .out-of-stock {
@@ -501,7 +501,7 @@
       border-radius: 20px;
       font-weight: 600;
       font-size: 0.85rem;
-      width: 100%;
+      width: 50%;
       transition: all 0.2s ease;
     }
     
