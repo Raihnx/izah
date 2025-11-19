@@ -96,7 +96,7 @@ const sellerNumber = '918606577577';
       const col = document.createElement('div');
       col.className = 'mb-3';
       col.innerHTML = `
-        <div class="combo-card">
+        <div class="combo-card" onclick="openComboDetail('${combo.id}')">
           <div class="combo-badge">${combo.badge}</div>
           <img src="${combo.image}" alt="${combo.name}">
           <div class="combo-card-body">
@@ -107,8 +107,8 @@ const sellerNumber = '918606577577';
               <span class="combo-sale-price">${fmtINR(combo.salePrice)}</span>
               <span class="combo-savings">${combo.discount}</span>
             </div>
-            <button class="btn btn-accent w-100" onclick="addComboToCart('${combo.id}')">
-              <i class="fas fa-shopping-bag"></i> Add to Cart
+            <button class="btn-view-product w-100" onclick="event.stopPropagation(); openComboDetail('${combo.id}')">
+              <i class="fas fa-eye"></i> View
             </button>
           </div>
         </div>
@@ -117,22 +117,56 @@ const sellerNumber = '918606577577';
     });
   }
 
-  function addComboToCart(comboId) {
+  function openComboDetail(comboId) {
     const combo = combos.find(c => c.id === comboId);
-    if (!combo || !combo.inStock) return;
+    if (!combo) return;
     
-    const currentCart = getCart();
-    currentCart.push({
+    currentProduct = {
       id: comboId,
       name: combo.name,
       price: combo.salePrice,
-      qty: 1,
-      image: combo.image,
-      isCombo: true
-    });
-    saveCart(currentCart);
-    showToast(`${combo.name} added to cart!`);
-    renderCartItems();
+      images: [combo.image],
+      description: combo.description,
+      inStock: combo.inStock,
+      qtyAvailable: 10,
+      isCombo: true,
+      originalPrice: combo.originalPrice,
+      discount: combo.discount
+    };
+    currentImageIndex = 0;
+    
+    document.getElementById('productModalTitle').innerText = combo.name;
+    document.getElementById('detail-name').innerText = combo.name;
+    document.getElementById('detail-price').innerHTML = `
+      <span style="text-decoration: line-through; color: var(--muted); font-size: 1rem; margin-right: 8px;">${fmtINR(combo.originalPrice)}</span>
+      <span style="color: var(--accent-dark);">${fmtINR(combo.salePrice)}</span>
+      <span style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; margin-left: 8px;">${combo.discount}</span>
+    `;
+    document.getElementById('detail-description').innerText = combo.description;
+    
+    const stockDiv = document.getElementById('detail-stock');
+    stockDiv.innerHTML = '';
+    
+    const actionsDiv = document.getElementById('detail-actions');
+    if(combo.inStock){
+      actionsDiv.innerHTML = `
+        <div class="d-flex align-items-center gap-2 mb-3 justify-content-center">
+          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(-1)" style="width:40px;height:40px">-</button>
+          <input type="number" class="form-control form-control-sm text-center" id="modal-qty" value="1" min="1" max="10" style="width:60px;font-weight:700" readonly>
+          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(1)" style="width:40px;height:40px">+</button>
+        </div>
+        <button class="btn btn-accent w-100" onclick="addToCartFromModal()">
+          <i class="fa fa-shopping-bag"></i> Add to Cart
+        </button>
+      `;
+    } else {
+      actionsDiv.innerHTML = `<button class="btn btn-secondary w-100" disabled>Sold Out</button>`;
+    }
+    
+    updateCarouselImages();
+    
+    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+    productModal.show();
   }
 
   function renderProducts(){
@@ -148,9 +182,6 @@ const sellerNumber = '918606577577';
       categoryProducts.forEach(p => {
         const soldClass = !p.inStock ? 'img-sold' : '';
         const soldBadge = !p.inStock ? '<div class="sold-overlay">Sold Out</div>' : '';
-        const stockBadge = p.inStock 
-          ? '<span class="stock-badge in-stock"><i class="fas fa-check-circle"></i> In Stock</span>'
-          : '<span class="stock-badge out-of-stock"><i class="fas fa-times-circle"></i> Out of Stock</span>';
 
         const card = document.createElement('div');
         card.innerHTML = `
@@ -162,7 +193,6 @@ const sellerNumber = '918606577577';
             <div class="card-body text-center">
               <div class="name">${p.name}</div>
               <div class="price mb-2">${fmtINR(p.price)}</div>
-              ${stockBadge}
               <button class="btn-view-product mt-2" onclick="openProductDetail(${p.id})">
                 <i class="fas fa-eye"></i> View
               </button>
@@ -190,11 +220,7 @@ const sellerNumber = '918606577577';
     document.getElementById('detail-description').innerText = product.description;
     
     const stockDiv = document.getElementById('detail-stock');
-    if(product.inStock){
-      stockDiv.innerHTML = `<span class="stock-badge in-stock"><i class="fa fa-check-circle"></i></span>`;
-    } else {
-      stockDiv.innerHTML = `<span class="stock-badge out-of-stock"><i class="fa fa-times-circle"></i> Sold Out</span>`;
-    }
+    stockDiv.innerHTML = '';
     
     const actionsDiv = document.getElementById('detail-actions');
     if(product.inStock){
@@ -253,7 +279,8 @@ const sellerNumber = '918606577577';
     const qtyInput = document.getElementById('modal-qty');
     let qty = parseInt(qtyInput.value) + change;
     if(qty < 1) qty = 1;
-    if(qty > currentProduct.qtyAvailable) qty = currentProduct.qtyAvailable;
+    const maxQty = currentProduct.isCombo ? 10 : currentProduct.qtyAvailable;
+    if(qty > maxQty) qty = maxQty;
     qtyInput.value = qty;
   }
 
@@ -267,7 +294,7 @@ const sellerNumber = '918606577577';
       price: currentProduct.price,
       qty: qty,
       image: currentProduct.images[0],
-      isCombo: false
+      isCombo: currentProduct.isCombo || false
     });
     saveCart(currentCart);
     showToast(`${qty}x ${currentProduct.name} added!`);
@@ -415,31 +442,27 @@ const sellerNumber = '918606577577';
   document.addEventListener('DOMContentLoaded', () => {
     const categoryLinks = document.querySelectorAll('.category-link');
     
-    // Close sidebar and scroll when clicking a link
     categoryLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Close sidebar first
         closeSidebar();
         
-        // Remove active class from all links
         categoryLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         
-        // Scroll to section after a short delay to allow sidebar to close
         setTimeout(() => {
           const targetId = link.getAttribute('href').substring(1);
           const targetSection = document.getElementById(targetId);
           if(targetSection) {
             const headerHeight = 100;
-            const targetPosition = targetSection.offsetTop - headerHeight;
+            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             window.scrollTo({
               top: targetPosition,
               behavior: 'smooth'
             });
           }
-        }, 300); // Delay matches sidebar close animation
+        }, 300);
       });
     });
     
@@ -490,5 +513,4 @@ const sellerNumber = '918606577577';
       titleIndex = (titleIndex + 1) % heroTitles.length;
       document.getElementById('hero-title').innerText = heroTitles[titleIndex];
     }, 2500);
-
   });
