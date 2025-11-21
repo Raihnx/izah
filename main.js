@@ -77,7 +77,7 @@ const sellerNumber = '918606577577';
   const fmtINR = n => '₹' + n.toString();
 
   function calculateDiscount(subtotal) {
-    if (subtotal >= 399) {
+    if (subtotal >= 499) {
       return { rate: 0.20, amount: Math.round(subtotal * 0.20) };
     } else if (subtotal >= 299) {
       return { rate: 0.10, amount: Math.round(subtotal * 0.10) };
@@ -148,9 +148,9 @@ const sellerNumber = '918606577577';
     if(combo.inStock){
       actionsDiv.innerHTML = `
         <div class="d-flex align-items-center gap-2 mb-3 justify-content-center">
-          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(-1)" style="width:40px;height:40px">-</button>
+          <button class="btn-qty-classic" onclick="adjustModalQty(-1)">−</button>
           <input type="number" class="form-control form-control-sm text-center" id="modal-qty" value="1" min="1" max="10" style="width:60px;font-weight:700" readonly>
-          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(1)" style="width:40px;height:40px">+</button>
+          <button class="btn-qty-classic" onclick="adjustModalQty(1)">+</button>
         </div>
         <button class="btn btn-accent w-100" onclick="addToCartFromModal()">
           <i class="fa fa-shopping-bag"></i> Add to Cart
@@ -223,9 +223,9 @@ const sellerNumber = '918606577577';
     if(product.inStock){
       actionsDiv.innerHTML = `
         <div class="d-flex align-items-center gap-2 mb-3 justify-content-center">
-          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(-1)" style="width:40px;height:40px">-</button>
+          <button class="btn-qty-classic" onclick="adjustModalQty(-1)">−</button>
           <input type="number" class="form-control form-control-sm text-center" id="modal-qty" value="1" min="1" max="${product.qtyAvailable}" style="width:60px;font-weight:700" readonly>
-          <button class="btn btn-sm btn-outline-dark" onclick="adjustModalQty(1)" style="width:40px;height:40px">+</button>
+          <button class="btn-qty-classic" onclick="adjustModalQty(1)">+</button>
         </div>
         <button class="btn btn-accent w-100" onclick="addToCartFromModal()">
           <i class="fa fa-shopping-bag"></i> Add to Cart
@@ -443,29 +443,33 @@ const sellerNumber = '918606577577';
       link.addEventListener('click', (e) => {
         e.preventDefault();
         
+        // Close sidebar first
         closeSidebar();
         
+        // Remove active class from all links
         categoryLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         
+        // Scroll to section with proper offset
         setTimeout(() => {
           const targetId = link.getAttribute('href').substring(1);
           const targetSection = document.getElementById(targetId);
           if(targetSection) {
-            const headerHeight = 100;
+            const headerHeight = 110; // navbar + discount banner + extra padding
             const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             window.scrollTo({
               top: targetPosition,
               behavior: 'smooth'
             });
           }
-        }, 300);
+        }, 100); // Small delay to ensure sidebar closes first
       });
     });
     
+    // Update active link on scroll
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('.category-section');
-      const scrollPos = window.scrollY + 110;
+      const scrollPos = window.scrollY + 120;
       
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
