@@ -749,7 +749,11 @@
       touch-action: manipulation;
       user-select: none;
     }
-
+     .btn-accent{
+      background-color: #00561e;
+      color: white;
+      
+     }
     /* Prevent text selection on double tap */
     .card, .combo-card, .btn, .nav-link {
       -webkit-user-select: none;
