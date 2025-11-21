@@ -388,7 +388,6 @@ const sellerNumber = '918606577577';
     }
     
     message += `*Total: ₹${total}*%0A%0A`;
-    message += `Please confirm availability and payment options (COD/Prepaid).`;
     
     const waLink = `https://wa.me/${sellerNumber}?text=${message}`;
     document.getElementById('checkout-whatsapp').href = waLink;
@@ -515,3 +514,4 @@ const sellerNumber = '918606577577';
       document.getElementById('hero-title').innerText = heroTitles[titleIndex];
     }, 2500);
   });
+
