@@ -1,4 +1,4 @@
- :root{
+:root{
       --bg:#ffffff;
       --primary:#1a1a1a;
       --accent:#6e2e4e;
@@ -70,8 +70,10 @@
     }
     
     .logo-img{
-      max-height: 32px;
+      max-height: 36px;
       width: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     /* Cart badge */
@@ -284,11 +286,8 @@
     }
 
     /* Buttons */
-   
-
     .btn-outline-dark {
       border: 1px solid var(--primary);
-    
       padding: 12px 24px;
       border-radius: 25px;
       font-weight: 600;
@@ -299,6 +298,34 @@
     .btn-outline-dark:active {
       background: var(--primary);
       color: white;
+      transform: scale(0.95);
+    }
+
+    /* Classic Quantity Buttons */
+    .btn-qty-classic {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--accent);
+      background: white;
+      color: var(--accent);
+      border-radius: 100%;
+      font-size: 1.2rem;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .btn-qty-classic:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-qty-classic:active {
       transform: scale(0.95);
     }
 
@@ -327,60 +354,62 @@
     }
     
     .combo-card {
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 16px;
+      background: white  ;
+      border: 1px solid var(--accent);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(255,105,180,0.1);
       transition: all 0.3s ease;
       margin-bottom: 20px;
     }
     
     .combo-card:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
     }
-    
-  
     
     .combo-card img {
       width: 100%;
-      height: 220px;
+      height: 180px;
       object-fit: cover;
     }
     
     .combo-card-body {
-      padding: 15px;
+      padding: 12px;
     }
     
     .combo-title {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      min-height: 2.4em;
+      line-height: 1.3;
     }
     
     .combo-description {
       color: var(--muted);
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      line-height: 1.4;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      min-height: 2.6em;
     }
     
     .combo-pricing {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 10px;
       flex-wrap: wrap;
     }
     
     .combo-original-price {
       text-decoration: line-through;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
     }
     
     .combo-sale-price {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--accent-dark);
     }
@@ -388,9 +417,9 @@
     .combo-savings {
       background: white;
       color: rgb(0, 110, 7);
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 12px;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
     }
 
@@ -404,8 +433,9 @@
 
     #combo-grid {
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 4px;
     }
     
     .card{
@@ -457,16 +487,14 @@
       margin-bottom: 8px;
     }
     
-
-    
     .out-of-stock {
       background: #e0e0e0;
       color: #666;
     }
     .btn-view-product-combo {
       background-color: white;
-      border: 1px solid black;
-      color: black;
+      border: 1px solid #6e2e4e;
+      color: #6e2e4e;
       padding: 10px 16px;
       border-radius: 20px;
       font-weight: 600;
@@ -659,7 +687,7 @@
 
     /* Category sections */
     .category-section{
-      scroll-margin-top: 100px;
+      scroll-margin-top: 110px;
       margin-bottom: 30px;
     }
     
@@ -728,13 +756,13 @@
       }
 
       #combo-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
       
       .card-img-top{height: 240px;}
+      .combo-card img {height: 240px;}
       .hero .title{font-size: 2.5rem;}
       .hero-carousel{height: 400px;}
-      .combo-card img {height: 280px;}
       .cart-item-img {width: 80px; height: 80px;}
       .product-detail-carousel{height: 400px;}
     }
@@ -746,9 +774,10 @@
       }
 
       #combo-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
       }
       
       .card-img-top{height: 280px;}
+      .combo-card img {height: 280px;}
       .hero-carousel{height: 500px;}
     }
