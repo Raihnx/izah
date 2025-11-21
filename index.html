@@ -21,30 +21,31 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container-fluid px-3">
-    <div class="row w-100 align-items-center">
-      <div class="col-2 text-start">
-        <button class="hamburger-btn" id="hamburger-btn">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
 
-      <div class="col-8">
-        <div class="logo-container">
-          <img src="assets/images/logo.png" alt="IZAH Logo" class="logo-img">
-        </div>
-      </div>
+    <div class="navbar-left">
+      <button class="hamburger-btn" id="hamburger-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
 
-      <div class="col-2 text-end">
-        <div class="cart-badge d-inline-block">
-          <a class="nav-link p-0" style="color:#1a1a1a" href="#cartModal" data-bs-toggle="modal">
-            <i class="fa fa-shopping-bag"></i>
-          </a>
-          <span id="cart-count" class="cart-count" style="display:none">0</span>
-        </div>
+    <div class="navbar-center">
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="IZAH Logo" class="logo-img">
       </div>
     </div>
+
+    <div class="navbar-right">
+      <div class="cart-badge">
+        <a class="nav-link p-0" style="color:#1a1a1a" href="#cartModal" data-bs-toggle="modal">
+          <i class="fa fa-shopping-bag"></i>
+        </a>
+        <span id="cart-count" class="cart-count" style="display:none">0</span>
+      </div>
+    </div>
+
   </div>
 </nav>
+
 
 <!-- DISCOUNT BANNER -->
 <div class="discount-banner">
