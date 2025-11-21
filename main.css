@@ -67,6 +67,7 @@
       align-items: center;
       justify-content: center;
       height: 36px;
+      padding-left:10px;
     }
     
     .logo-img{
@@ -780,4 +781,5 @@
       .combo-card img {height: 280px;}
       .hero-carousel{height: 500px;}
     }
+
 
