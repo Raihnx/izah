@@ -79,7 +79,6 @@
     /* Cart badge */
     .cart-badge{
       position: relative;
-      padding: 8px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -781,3 +780,4 @@
       .combo-card img {height: 280px;}
       .hero-carousel{height: 500px;}
     }
+
