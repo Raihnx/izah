@@ -1,5 +1,14 @@
 const sellerNumber = '918891093751';
 
+// Sidebar Toggle Function
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  
+  sidebar.classList.toggle('active');
+  overlay.classList.toggle('active');
+}
+
   // Combo deals data   
   const combos = [
     
@@ -7,55 +16,48 @@ const sellerNumber = '918891093751';
 
   const products = [
     // Rings - All ₹99
-    {id: 101, name: 'Classic Gold Ring', price: 99, images: ['assets/images/ring1.jpg'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Elegant classic gold ring. Simple and timeless.'},
-    {id: 102, name: 'Rose Gold Ring', price: 99, images: ['assets/images/ring2.jpg'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Beautiful rose gold finish ring. Perfect for everyday wear.'},
-    {id: 103, name: 'Silver Band Ring', price: 99, images: ['assets/images/ring3.jpg'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Minimalist silver band. Sleek and modern.'},
-    {id: 104, name: 'Butterfly Ring', price: 99, images: ['assets/images/ring4.jpg'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Delicate butterfly design. Charming and elegant.'},
-    {id: 105, name: 'Heart Ring', price: 99, images: ['assets/images/ring5.jpg'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Cute heart design ring. Perfect gift option.'},
-    
+    {id: 101, name: 'Eternal Circle Ring', price: 99, images: ['assets/images/circle.PNG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Elegant classic gold ring. Simple and timeless.'},
+    {id: 102, name: 'GoldQuad Ring', price: 99, images: ['assets/images/square.PNG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Beautiful rose gold finish ring. Perfect for everyday wear.'},
+    {id: 103, name: 'TriAura Ring', price: 99, images: ['assets/images/triangle.PNG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Minimalist silver band. Sleek and modern.'},
+    {id: 104, name: 'Floria Ring', price: 99, images: ['assets/images/flower.JPG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Delicate butterfly design. Charming and elegant.'},
+    {id: 105, name: 'Starlet Glow Ring', price: 99, images: ['assets/images/star.PNG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 5, category: 'rings', description: 'Cute heart design ring. Perfect gift option.'},
+    {id: 106, name: 'Divine Heart Ring', price: 99, images: ['assets/images/love.PNG','assets/images/allrings.JPG'], inStock: true, qtyAvailable: 3, category: 'rings', description: 'Cute heart design ring. Perfect gift option.'},
     // Bracelets
-    {id: 1, name: 'Gold Heart Double Layer Bracelet', price: 249, images: ['assets/images/Goldheartdoublelayerbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 2, category: 'bracelets', description: 'Elegant double-layered bracelet with a delicate gold heart charm. Perfect for everyday wear.'},
-    {id: 2, name: 'Halo Heart Double Layer Bracelet', price: 249, images: ['assets/images/Haloheartdoublelayerbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 2, category: 'bracelets', description: 'Stunning halo heart design with double chain layers. A must-have accessory.'},
-    {id: 3, name: 'Butterfly Gold Bracelet', price: 249, images: ['assets/images/Butterflygoldbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 2, category: 'bracelets', description: 'Beautiful butterfly charm bracelet in gold finish. Adds a touch of elegance to any outfit.'},
+    {id: 1, name: 'Gold Heart Double Layer Bracelet', price: 249, images: ['assets/images/Goldheartdoublelayerbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 1, category: 'bracelets', description: 'Elegant double-layered bracelet with a delicate gold heart charm. Perfect for everyday wear.'},
+    {id: 2, name: 'Halo Heart Double Layer Bracelet', price: 249, images: ['assets/images/Haloheartdoublelayerbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 1, category: 'bracelets', description: 'Stunning halo heart design with double chain layers. A must-have accessory.'},
+    {id: 3, name: 'Butterfly Gold Bracelet', price: 249, images: ['assets/images/Butterflygoldbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 1, category: 'bracelets', description: 'Beautiful butterfly charm bracelet in gold finish. Adds a touch of elegance to any outfit.'},
     {id: 4, name: 'Elegant Star Bracelet', price: 249, images: ['assets/images/Elegantstarbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 3, category: 'bracelets', description: 'Minimalist star charm bracelet. Perfect for those who love subtle elegance.'},
     {id: 5, name: 'Star Double Layered Gold Bracelet', price: 249, images: ['assets/images/Stardoublelayeredgolfbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 1, category: 'bracelets', description: 'Double-layered design with star charm. Versatile and stylish.'},
     {id: 6, name: 'Gold Double Layer Bracelet', price: 249, images: ['assets/images/Golddoublelayerbracelet.JPG','assets/images/allbracelets.JPG'], inStock: true, qtyAvailable: 2, category: 'bracelets', description: 'Classic double-layer gold bracelet. Simple yet sophisticated.'},
 
     // Necklaces
     {id: 7, name: 'Gold Heart Necklace', price: 249, images: ['assets/images/Goldheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Goldheartnecklace2.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Delicate gold heart pendant necklace. A timeless piece for any jewelry collection.'},
-    {id: 8, name: 'Twin Butterfly Golden Chain Necklace', price: 232, images: ['assets/images/Twinbutterflygoldenchainnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Twinbutterflygoldenchainnecklace1.png'], inStock: true, qtyAvailable: 2, category: 'necklaces', description: 'Twin butterfly charms on a golden chain. Feminine and graceful.'},
+    {id: 8, name: 'Twin Butterfly Golden Chain Necklace', price: 232, images: ['assets/images/Twinbutterflygoldenchainnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Twinbutterflygoldenchainnecklace1.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Twin butterfly charms on a golden chain. Feminine and graceful.'},
     {id: 9, name: 'Butterfly Y Chain Necklace', price: 253, images: ['assets/images/Butterflyychainnecklace.JPG','assets/images/Goldheartnecklace1.JPG'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Trendy Y-chain design with butterfly pendant. Makes a statement.'},
-    {id: 10, name: 'Butterfly Drop Necklace', price: 253, images: ['assets/images/Butterflydropnecklace.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Elegant butterfly drop pendant. Perfect for special occasions.'},
+    {id: 10, name: 'Butterfly Drop Necklace', price: 253, images: ['assets/images/Butterflydropnecklace.png'], inStock: false, qtyAvailable: 0, category: 'necklaces', description: 'Elegant butterfly drop pendant. Perfect for special occasions.'},
     {id: 11, name: 'Rose Gold Layered Necklace', price: 299, images: ['assets/images/Rosegoldlayerednecklace.JPG','assets/images/Rosegoldlayerednecklace1.png'], inStock: true, qtyAvailable: 2, category: 'necklaces', description: 'Luxurious rose gold layered necklace. Adds sophistication to any look.'},
-    {id: 12, name: 'Bow Snake Necklace', price: 284, images: ['assets/images/Bowsnakenecklace.JPG','assets/images/Bowsnakenecklace1.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Unique bow design with snake chain. Modern and chic.'},
+    {id: 12, name: 'Bow Snake Necklace', price: 284, images: ['assets/images/Bowsnakenecklace.JPG','assets/images/Bowsnakenecklace1.png'], inStock: false, qtyAvailable: 1, category: 'necklaces', description: 'Unique bow design with snake chain. Modern and chic.'},
     {id: 13, name: 'Double Layered Snake Chain Necklace', price: 252, images: ['assets/images/Doublelayeredsnakechainnecklace.JPG','assets/images/Doublelayeredsnakechainnecklace1.png'], inStock: true, qtyAvailable: 2, category: 'necklaces', description: 'Sleek double-layered snake chain. Minimalist elegance.'},
-    {id: 14, name: 'Elegant Bow Necklace', price: 334, images: ['assets/images/ElegantBownecklace.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Charming bow pendant necklace. Sweet and elegant.'},
+    {id: 14, name: 'Elegant Bow Necklace', price: 334, images: ['assets/images/ElegantBownecklace.png'], inStock: false, qtyAvailable: 1, category: 'necklaces', description: 'Charming bow pendant necklace. Sweet and elegant.'},
     {id: 15, name: 'Clover Double Chain Necklace', price: 322, images: ['assets/images/Cloverdoublechainnecklace.JPG','assets/images/Cloverdoublechainnecklace1.png'], inStock: true, qtyAvailable: 1, category: 'necklaces', description: 'Lucky clover charm with double chain. Stylish and meaningful.'},
-    {id: 16, name: 'Minimal Butterfly Necklace', price: 210, images: ['assets/images/Minimalbutterflynecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalbutterflynecklace1.png'], inStock: true, qtyAvailable: 2, category: 'necklaces', description: 'Minimalist butterfly pendant. Simple and beautiful.'},
+    {id: 16, name: 'Minimal Butterfly Necklace', price: 210, images: ['assets/images/Minimalbutterflynecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalbutterflynecklace1.png'], inStock: false, qtyAvailable: 2, category: 'necklaces', description: 'Minimalist butterfly pendant. Simple and beautiful.'},
     {id: 17, name: 'Minimal Heart Necklace', price: 210, images: ['assets/images/Minimalheartnecklace.JPG','assets/images/Goldheartnecklace1.JPG','assets/images/Minimalheartnecklace1.png'], inStock: true, qtyAvailable:2 , category: 'necklaces', description: 'Delicate heart pendant. Classic and versatile.'},
   
     
     // Earrings
-    {id: 18, name: 'Rose Gold Sphere Earrings', price: 342, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
+    {id: 18, name: 'Rose Gold Sphere Earrings', price: 342, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: false, qtyAvailable: 0, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
     {id: 19, name: 'Golden Prism Earrings', price: 149, images: ['assets/images/Goldenprismearrings.JPG'], inStock: false, qtyAvailable: 10, category: 'earrings', description: 'Geometric prism design in gold. Modern and eye-catching.'},
     {id: 20, name: 'Flower Cluster Earrings', price: 159, images: ['assets/images/Flowerclusterearrings.JPG'], inStock: false, qtyAvailable: 9, category: 'earrings', description: 'Delicate flower cluster studs. Feminine and charming.'},
     {id: 21, name: 'Gold Huggie Hoop Earrings', price: 286, images: ['assets/images/Goldhuggiehoopearrings.JPG','assets/images/Goldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Classic gold huggie hoops. Versatile and stylish.'},
     {id: 22, name: 'Swirl Earrings', price: 149, images: ['assets/images/Swirlearrings.JPG','assets/images/Swirlearrings1.png'], inStock: false, qtyAvailable: 15, category: 'earrings', description: 'Unique swirl design. Modern and elegant.'},
     {id: 23, name: 'Rose Gold Huggie Hoop Earrings', price: 286, images: ['assets/images/Rosegoldhuggiehoopearrings.JPG','assets/images/Rosegoldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Rose gold huggie hoops. Chic and sophisticated.'},
-    {id: 24, name: 'Vema Rose Gold Earrings', price: 254, images: ['assets/images/Vemarosegoldearring.JPG'], inStock: true, qtyAvailable: 2, category: 'earrings', description: 'Elegant Vema design in rose gold. Perfect for any occasion.'},
-    {id: 25, name: 'Pearl Elegant Rose Gold Earrings', price: 269, images: ['assets/images/Pearlelegantrosegoldearrings.JPG','assets/images/Pearlelegantrosegoldearrings1.JPG'], inStock: true, qtyAvailable: 2, category: 'earrings', description: 'Beautiful pearl studs in rose gold. Classic elegance.'},
+    {id: 24, name: 'Vema Rose Gold Earrings', price: 254, images: ['assets/images/Vemarosegoldearring.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Elegant Vema design in rose gold. Perfect for any occasion.'},
+    {id: 25, name: 'Pearl Elegant Rose Gold Earrings', price: 269, images: ['assets/images/Pearlelegantrosegoldearrings.JPG','assets/images/Pearlelegantrosegoldearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Beautiful pearl studs in rose gold. Classic elegance.'},
     {id: 26, name: 'Halo Stud Earrings', price: 310, images: ['assets/images/Halostudearrings.JPG'], inStock: true, qtyAvailable: 2, category: 'earrings', description: 'Stunning halo design studs. Sparkle and shine.'},
-    {id: 27, name: 'Vema Silver Earrings', price: 254, images: ['assets/images/Vemasilverearrings.JPG'], inStock: true, qtyAvailable: 2, category: 'earrings', description: 'Elegant Vema design in silver. Versatile and beautiful.'},
+    {id: 27, name: 'Vema Silver Earrings', price: 254, images: ['assets/images/Vemasilverearrings.JPG'], inStock: false, qtyAvailable: 0, category: 'earrings', description: 'Elegant Vema design in silver. Versatile and beautiful.'},
   
 
 
-    // Earrings
-    {id: 28, name: 'Rose Gold Sphere Earrings', price: 99, images: ['assets/images/Rosegoldsphereearrings.JPG','assets/images/Rosegoldsphereearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Elegant rose gold sphere studs. Perfect for everyday wear.'},
-    {id: 29, name: 'Golden Prism Earrings', price: 99, images: ['assets/images/Goldenprismearrings.JPG'], inStock: false, qtyAvailable: 10, category: 'earrings', description: 'Geometric prism design in gold. Modern and eye-catching.'},
-    {id: 30, name: 'Flower Cluster Earrings', price: 99, images: ['assets/images/Flowerclusterearrings.JPG'], inStock: false, qtyAvailable: 9, category: 'earrings', description: 'Delicate flower cluster studs. Feminine and charming.'},
-    {id: 31, name: 'Gold Huggie Hoop Earrings', price: 99, images: ['assets/images/Goldhuggiehoopearrings.JPG','assets/images/Goldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Classic gold huggie hoops. Versatile and stylish.'},
-    {id: 32, name: 'Swirl Earrings', price: 99, images: ['assets/images/Swirlearrings.JPG','assets/images/Swirlearrings1.png'], inStock: false, qtyAvailable: 15, category: 'earrings', description: 'Unique swirl design. Modern and elegant.'},
-    {id: 33, name: 'Rose Gold Huggie Hoop Earrings', price: 99, images: ['assets/images/Rosegoldhuggiehoopearrings.JPG','assets/images/Rosegoldhuggiehoopearrings1.JPG'], inStock: true, qtyAvailable: 1, category: 'earrings', description: 'Rose gold huggie hoops. Chic and sophisticated.'},
    
   ];
 
@@ -215,7 +217,7 @@ const sellerNumber = '918891093751';
       
       card.innerHTML = `
         <img src="${ring.images[0]}" alt="${ring.name}">
-        <div class="ring-card-badge">₹99 Only</div>
+        
         <div class="ring-card-overlay">
           <div class="ring-card-name">${ring.name}</div>
           <div class="ring-card-price">₹${ring.price}</div>
@@ -649,77 +651,7 @@ const sellerNumber = '918891093751';
   }
 
   // Hamburger Menu Toggle
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const sidebarMenu = document.getElementById('sidebar-menu');
-  const sidebarClose = document.getElementById('sidebar-close');
-  const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-  function openSidebar() {
-    sidebarMenu.classList.add('active');
-    sidebarOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeSidebar() {
-    sidebarMenu.classList.remove('active');
-    sidebarOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  hamburgerBtn.addEventListener('click', openSidebar);
-  sidebarClose.addEventListener('click', closeSidebar);
-  sidebarOverlay.addEventListener('click', closeSidebar);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const categoryLinks = document.querySelectorAll('.category-link');
-    
-    categoryLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Close sidebar first
-        closeSidebar();
-        
-        // Remove active class from all links
-        categoryLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        
-        // Scroll to section with proper offset
-        setTimeout(() => {
-          const targetId = link.getAttribute('href').substring(1);
-          const targetSection = document.getElementById(targetId);
-          if(targetSection) {
-            const headerHeight = 110; // navbar + discount banner + extra padding
-            const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }, 100); // Small delay to ensure sidebar closes first
-      });
-    });
-    
-    // Update active link on scroll
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('.category-section');
-      const scrollPos = window.scrollY + 120;
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if(scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-          categoryLinks.forEach(link => {
-            link.classList.remove('active');
-            if(link.getAttribute('href') === `#${sectionId}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    });
+ 
 
     renderCombos();
     renderProducts();
@@ -749,4 +681,7 @@ const sellerNumber = '918891093751';
       titleIndex = (titleIndex + 1) % heroTitles.length;
       document.getElementById('hero-title').innerText = heroTitles[titleIndex];
     }, 2500);
-  });
+
+
+
+
